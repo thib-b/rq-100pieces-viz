@@ -1,0 +1,7 @@
+# Test-harness dependencies (install into a venv; the render scripts themselves run
+# under Blender's bundled Python, which already has numpy).
+#   python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
+pytest>=8
+numpy>=1.24
+Pillow>=10
+tomli>=2 ; python_version < "3.11"   # recipe TOML parsing on Python < 3.11
