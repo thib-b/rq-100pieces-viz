@@ -1,0 +1,6 @@
+# "Haha" — short square bloom-only overlay on a transparent film (grow + hold, no dissolve,
+# no revealed photo). Encodes a ProRes 4444 .mov so the alpha survives for compositing.
+treatment    = "bloom_overlay"
+art          = "plates/haha.jpg"
+aspect       = "square"          # 1:1  (2048x2048)
+duration_sec = 5

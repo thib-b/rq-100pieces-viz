@@ -1,0 +1,6 @@
+# "Haha" single — 9:16 vertical bloom-reveal for social. Same choreography as landscape,
+# only the aspect differs (proof the aspect ratio is now a recipe parameter, not a file copy).
+treatment    = "reveal"
+art          = "plates/haha.jpg"
+aspect       = "vertical"        # 9:16  (1152x2048)
+duration_sec = 193

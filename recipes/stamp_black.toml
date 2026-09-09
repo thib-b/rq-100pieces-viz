@@ -1,0 +1,6 @@
+# Stamp draw-in overlay (black veins) on a transparent film -> ProRes 4444 .mov.
+treatment    = "stamp"
+stamp_image  = "plates/hundred_pieces_stamp.png"
+aspect       = "square"          # 1:1  (2048x2048)
+duration_sec = 5
+vein_hex     = "#000000"

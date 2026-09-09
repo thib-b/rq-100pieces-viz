@@ -12,7 +12,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from PIL import Image
-from helpers import GOLDEN, TREATMENTS, blender_available, render_last_frame
+from helpers import (GOLDEN, RECIPES, TREATMENTS, blender_available,
+                     render_last_frame, render_recipe_last)
+
+
+def _save(png, dims, golden_name):
+    got = Image.open(png).size
+    if got != dims:
+        raise SystemExit(f"{golden_name}: rendered {got}, expected {dims}")
+    Image.open(png).convert("RGB").resize((128, 128)).save(GOLDEN / f"{golden_name}.png")
+    print(f"wrote golden {golden_name}.png  (source {got})")
 
 
 def main():
@@ -21,15 +30,15 @@ def main():
     GOLDEN.mkdir(parents=True, exist_ok=True)
     scratch = Path(__file__).resolve().parent / "_scratch" / "gen"
     for name, script, extra, dims in TREATMENTS:
-        out = scratch / name
-        proc, png = render_last_frame(script, out, extra)
+        proc, png = render_last_frame(script, scratch / name, extra)
         if proc.returncode != 0 or png is None:
             raise SystemExit(f"render failed for {name}:\n{proc.stdout[-1500:]}")
-        got = Image.open(png).size
-        if got != dims:
-            raise SystemExit(f"{name}: rendered {got}, expected {dims}")
-        Image.open(png).convert("RGB").resize((128, 128)).save(GOLDEN / f"{name}.png")
-        print(f"wrote golden {name}.png  (source {got})")
+        _save(png, dims, name)
+    for name, recipe_rel, dims in RECIPES:
+        proc, png = render_recipe_last(recipe_rel, scratch / f"recipe_{name}")
+        if proc.returncode != 0 or png is None:
+            raise SystemExit(f"recipe render failed for {name}:\n{proc.stdout[-1500:]}")
+        _save(png, dims, f"recipe_{name}")
 
 
 if __name__ == "__main__":

@@ -16,6 +16,7 @@ from PIL import Image
 
 REPO = Path(__file__).resolve().parents[1]
 ANIM = REPO / "animations"
+ENGINE_ENTRY = REPO / "100pieces.py"
 GOLDEN = Path(__file__).resolve().parent / "golden"
 BLENDER = os.environ.get("BLENDER_BIN", "/opt/homebrew/bin/blender")
 
@@ -34,6 +35,17 @@ TREATMENTS = [
     ("stamp_overlay_white",  "stamp_overlay.py",        ("--color", "white"),  (2048, 2048)),
 ]
 
+# The recipe-engine treatments (name, recipe file, expected (width, height)). One recipe
+# per legacy treatment, driven through the single 100pieces.py engine.
+RECIPES = [
+    ("haha_landscape",     "recipes/haha_landscape.toml",     (2048, 1152)),
+    ("haha_vertical",      "recipes/haha_vertical.toml",      (1152, 2048)),
+    ("haha_bloom_overlay", "recipes/haha_bloom_overlay.toml", (2048, 2048)),
+    ("stamp_white",        "recipes/stamp_white.toml",        (2048, 2048)),
+    ("stamp_black",        "recipes/stamp_black.toml",        (2048, 2048)),
+    ("stamp_blooms",       "recipes/stamp_blooms.toml",       (2048, 1152)),
+]
+
 
 def blender_available():
     return Path(BLENDER).exists()
@@ -48,6 +60,17 @@ def render_last_frame(script, out_dir, extra_args=()):
     out_dir.mkdir(parents=True, exist_ok=True)
     cmd = [BLENDER, "--background", "--python", str(ANIM / script), "--",
            "--last", "--output", str(out_dir), *extra_args]
+    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
+    pngs = sorted(glob.glob(str(out_dir / "last_frame*.png")))
+    return proc, (Path(pngs[0]) if pngs else None)
+
+
+def render_recipe_last(recipe_rel, out_dir):
+    """Render a recipe's final frame via `100pieces.py -- --recipe ... --last`."""
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    cmd = [BLENDER, "--background", "--python", str(ENGINE_ENTRY), "--",
+           "--recipe", str(REPO / recipe_rel), "--last", "--output", str(out_dir)]
     proc = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
     pngs = sorted(glob.glob(str(out_dir / "last_frame*.png")))
     return proc, (Path(pngs[0]) if pngs else None)

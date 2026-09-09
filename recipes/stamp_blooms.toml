@@ -1,0 +1,6 @@
+# Stamp draws itself in with fluffy blob colonies growing everywhere around it, on deep
+# orange (the older "stamp with blooms around it" treatment). Frames only (no auto-encode).
+treatment    = "stamp_blooms"
+stamp_image  = "plates/hundred_pieces_stamp.png"
+aspect       = "landscape"       # 16:9  (2048x1152)
+duration_sec = 193

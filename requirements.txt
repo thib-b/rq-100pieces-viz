@@ -1,12 +1,7 @@
-# Blender Headless Visualization Pipeline Dependencies
-# 
-# Note: Blender ships with its own Python interpreter, so these packages
-# would need to be installed in Blender's embedded Python environment.
-# For basic functionality, no additional packages are required.
-
-# Optional: blenderless package for easier management of multiple renders
-# pip install blenderless
-
-# For development/testing outside of Blender (not for use with bpy)
-# numpy>=1.0.0
-# pillow>=8.0.0
+# Runtime: the render engine runs inside Blender's bundled Python, which already ships
+# numpy — so there is nothing to pip-install to render. External tools required on PATH:
+#   * Blender 5.x            (https://www.blender.org/)  -> /opt/homebrew/bin/blender
+#   * ffmpeg                 (for the auto-encode step)
+#
+# To run the test harness (outside Blender), install the dev deps into a venv:
+#   python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt

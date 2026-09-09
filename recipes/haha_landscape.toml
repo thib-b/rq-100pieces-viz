@@ -1,0 +1,6 @@
+# "Haha" single — landscape bloom-reveal master (the reference treatment).
+# Blooms reconstruct the artwork, hold, then dissolve to reveal the photo underneath.
+treatment    = "reveal"
+art          = "plates/haha.jpg"
+aspect       = "landscape"       # 16:9  (2048x1152)
+duration_sec = 193               # 3:13 @ 60fps  -> encodes haha_landscape.mp4 (H.264 crf 12)
