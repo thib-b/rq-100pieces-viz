@@ -1,0 +1,24 @@
+# Rendered output frame sequences (regenerable, tens of GB — never commit)
+render_full*/
+render_haha*/
+renders/
+# Any ad-hoc render output dir at the repo root
+/out/
+/tmp_render*/
+
+# Encoded video masters (regenerable from frames)
+*.mp4
+*.mov
+
+# Test scratch output (golden thumbnails under tests/golden/ are committed explicitly)
+tests/_scratch/
+.pytest_cache/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# macOS
+.DS_Store
