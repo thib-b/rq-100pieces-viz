@@ -34,6 +34,22 @@ unless `--fullres`), or no mode flag for the full render. `--output DIR` sets wh
 the encoded master go. Frames are `frame_#####.png` (5-digit pad); the master is named after
 the recipe.
 
+For targeted work (used a lot when tuning the lyrics overlay) there are three more modes:
+
+```bash
+# a single frame, at a chosen resolution %
+blender --background --python 100pieces.py -- --recipe recipes/haha_lyrics_test.toml --frame 5790 --respct 40 --output out/spot
+
+# an inclusive frame range (optionally every Nth frame with --step)
+blender --background --python 100pieces.py -- --recipe recipes/haha_lyrics_test.toml --range 630 900 --respct 100 --output out/win
+```
+
+- `--frame N` renders just frame `N`; `--range A B [--step S]` renders frames `A..B`.
+- `--respct N` sets the resolution percentage (e.g. `--respct 40` for a quick low-res pass);
+  `--last`/`--preview` set their own, and the full render is always 100%.
+- Both write `frame_#####.png` at the real frame indices, so they splice straight back into a
+  full sequence — handy for re-rendering only the frames a change actually touches.
+
 ## Recipes
 
 A recipe is a TOML file in [`recipes/`](recipes/). It picks a **treatment**, points at an image
@@ -46,9 +62,11 @@ per-treatment defaults (see [`engine/recipe.py`](engine/recipe.py)).
 | `bloom_overlay` | blooms reconstruct the artwork on a transparent film, then hold | transparent | ProRes 4444 mov (alpha) |
 | `stamp` | the stamp letterforms draw themselves in on a transparent film | transparent | ProRes 4444 mov (alpha) |
 | `stamp_blooms` | the stamp draws in with blooms growing everywhere around it | deep orange | frames only |
+| `lyrics` | song lyrics trace themselves in word-by-word beside the dish, then un-trace; for compositing over another render | transparent | frames only (you composite + encode — see below) |
 
 Shipped recipes: `haha_landscape` (16:9), `haha_vertical` (9:16), `haha_bloom_overlay`
-(1:1), `stamp_white`, `stamp_black`, `stamp_blooms`.
+(1:1), `stamp_white`, `stamp_black`, `stamp_blooms`, `haha_lyrics` (16:9 lyrics overlay, 60fps)
+and `haha_lyrics_test` (30fps, for fast look-tests).
 
 **Two things that used to mean copying a whole script are now recipe fields:**
 
@@ -66,6 +84,49 @@ Shipped recipes: `haha_landscape` (16:9), `haha_vertical` (9:16), `haha_bloom_ov
    point `art`/`stamp_image` at your plate. Adjust `duration_sec`, `aspect`, or any knob.
 3. `--preview` it, then do the full render.
 
+## Lyrics overlay (the `lyrics` treatment)
+
+The `lyrics` treatment renders a song's lyrics as a **transparent overlay** to composite over an
+existing plate render (e.g. the Haha reveal) — it does **not** produce a finished video on its
+own (`encode = "none"`). Each line traces itself in **word-by-word**, synced to the vocal via
+forced alignment, in Helvetica-Neue-referenced black filaments in the free columns beside the
+dish, then un-traces away; "Haha" words fade black→orange (and the last one stays to the end).
+
+Song-specific data lives under a `haha_` prefix (`tools/haha_lyrics.txt`, `haha_cues.json`, …)
+and `plates/haha_lyrics/`; the scripts in `tools/` are generic. Pipeline (Haha as the example):
+
+```bash
+# 1. lyrics text -> per-line alpha masks + word boxes
+.venv/bin/python tools/make_lyrics_masks.py            # -> plates/haha_lyrics/*.png, tools/haha_lyrics_layout.json
+
+# 2. forced-align the lyrics to the master audio for word timings
+#    (needs stable-ts/torch in a separate .venv-align — NOT committed)
+.venv-align/bin/python tools/align_lyrics.py --audio "Robocobra Quartet - Haha.wav"   # -> tools/haha_align_words_large.json
+
+# 3. merge masks + timings into cues (applies tools/haha_time_fixes.json, clamps durations,
+#    places lines L/R, flags the final Haha to stay)
+.venv/bin/python tools/build_cues.py                   # -> tools/haha_cues.json
+
+# 4. render the transparent overlay (60fps, all frames)
+blender --background --python 100pieces.py -- --recipe recipes/haha_lyrics.toml --output out/haha_lyrics_ov
+#    fast look-tests: recipes/haha_lyrics_test.toml at 30fps with --frame / --range --respct 40
+
+# 5. composite over the plate, hold its last frame to the audio length, mux the master bit-exact
+ffmpeg -y \
+  -framerate 60 -start_number 1 -i renders/render_haha_v4/frame_%05d.png \
+  -framerate 60 -start_number 1 -i out/haha_lyrics_ov/frame_%05d.png \
+  -i "Robocobra Quartet - Haha.wav" \
+  -filter_complex "[0]tpad=stop=38:stop_mode=clone[p];[p][1]overlay=format=auto,format=yuv420p[v]" \
+  -map "[v]" -map 2:a -c:v libx264 -crf 10 -preset slow -c:a copy -shortest -movflags +faststart \
+  out/haha_lyrics.mov
+```
+
+In the composite: `-c:a copy` keeps the mastered audio **bit-exact** (never re-encode a music
+master), `-shortest` ends the video exactly when the audio does, and `tpad=stop=38` holds the
+plate's last frame for the tail (here 38 frames) so the picture lasts as long as the audio —
+set that to `audio_frames − plate_frames`. Because PCM can't live in an `.mp4`, the output is an
+`.mov` (H.264 video + PCM audio); YouTube accepts it, or re-export via DaVinci if preferred.
+
 ## Layout
 
 ```
@@ -76,7 +137,8 @@ engine/
   recipe.py         the Recipe dataclass + TOML loader + per-treatment defaults
   render.py         the Blender engine: consumes a recipe, builds the scene, renders, encodes
 recipes/            one TOML per song/format
-plates/             committed source images (artwork, stamp mask)
+plates/             committed source images (artwork, stamp mask, lyric masks)
+tools/              lyrics pipeline: mask generation, forced alignment, cue building (+ song data)
 tests/              unit tests (pure logic) + golden characterization tests (render one frame)
 animations/         LEGACY standalone scripts, kept as historical artifacts (see below)
 ```
