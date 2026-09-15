@@ -1,0 +1,10 @@
+# Full lyrics overlay for the Haha video: 60fps, full res, transparent film.
+# 11,618 frames = 193.6333s = the 193.617s audio rounded up to the next frame.
+# Rendered as a transparent PNG sequence; composited over the plate + encoded afterwards.
+name = "haha_lyrics"
+treatment = "lyrics"
+aspect = "landscape"
+fps = 60
+duration_sec = 193.6333
+cues = "tools/cues.json"
+encode = "none"

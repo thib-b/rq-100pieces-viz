@@ -18,6 +18,7 @@ tests/_scratch/
 __pycache__/
 *.pyc
 .venv/
+.venv-align/
 venv/
 
 # macOS

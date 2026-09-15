@@ -12,6 +12,7 @@ Modes: --last (final frame only), --preview [--fullres] (spread of frames), or f
 legacy animations/ scripts, parameterised by the recipe; the pure math/image logic lives in
 engine.core and engine.plate.
 """
+import json
 import math
 import os
 import random
@@ -386,6 +387,177 @@ def world_mapping(rcp, bbox, frame_w, frame_h):
     return to_world, stamp_half
 
 
+# ---------------- lyrics ----------------
+def load_mask_aspect(path, long_grid, thresh):
+    """Downsample a mask PNG's alpha to a boolean grid preserving aspect (long side=long_grid).
+    Returns (mask[gh,gw] bool, (gw, gh), (fullW, fullH)). Row 0 = image bottom (Blender order)."""
+    img = bpy.data.images.load(path)
+    w, h = img.size
+    buf = np.empty(w * h * 4, dtype=np.float32)
+    img.pixels.foreach_get(buf)
+    alpha = buf.reshape(h, w, 4)[:, :, 3]
+    bpy.data.images.remove(img)
+    if h >= w:
+        gh = long_grid; gw = max(1, round(long_grid * w / h))
+    else:
+        gw = long_grid; gh = max(1, round(long_grid * h / w))
+    rows = np.linspace(0, h - 1, gh).astype(int)
+    cols = np.linspace(0, w - 1, gw).astype(int)
+    return alpha[np.ix_(rows, cols)] > thresh, (gw, gh), (w, h)
+
+
+def make_word_object(name, world_fils, bevel, mat):
+    """A word's filaments as one beveled POLY curve, centred on its own origin (so scaling the
+    object grows it in place). Returns (obj, curve)."""
+    pts_all = [p for pts, _ in world_fils for p in pts]
+    cx = sum(p[0] for p in pts_all) / len(pts_all)
+    cy = sum(p[1] for p in pts_all) / len(pts_all)
+    cu = bpy.data.curves.new(name, "CURVE")
+    cu.dimensions = "3D"
+    cu.bevel_depth = bevel
+    cu.bevel_resolution = 1
+    cu.use_fill_caps = True
+    for pts, radii in world_fils:
+        sp = cu.splines.new("POLY")
+        sp.points.add(len(pts) - 1)
+        coords = []
+        for (x, y) in pts:
+            coords += [x - cx, y - cy, 0.0, 1.0]
+        sp.points.foreach_set("co", coords)
+        sp.points.foreach_set("radius", radii)
+    cu.materials.append(mat)
+    obj = bpy.data.objects.new(name, cu)
+    bpy.context.collection.objects.link(obj)
+    obj.location = (cx, cy, 0.0)
+    return obj, cu
+
+
+def _emission_color_input(mat):
+    return next(n for n in mat.node_tree.nodes if n.type == "EMISSION").inputs["Color"]
+
+
+def _draw_in(cu, birth, trace_f):
+    cu.bevel_factor_end = 0.0
+    cu.keyframe_insert("bevel_factor_end", frame=birth)
+    cu.bevel_factor_end = 1.0
+    cu.keyframe_insert("bevel_factor_end", frame=birth + trace_f)
+
+
+def _retract(cu, birth, trace_f, start, retract_f):
+    """Un-trace (recede) the strokes back to nothing, held until `start`, over `retract_f`."""
+    start = max(start, birth + trace_f + 1)
+    cu.bevel_factor_end = 1.0
+    cu.keyframe_insert("bevel_factor_end", frame=start)
+    cu.bevel_factor_end = 0.0
+    cu.keyframe_insert("bevel_factor_end", frame=start + retract_f)
+
+
+def build_lyrics(rcp, frame_w, frame_h, total):
+    """Trace each lyric line word-by-word in the free columns beside the dish, retract it when
+    the line ends; 'Haha' words stay and drift black->orange, growing subtly to the song end."""
+    fps = rcp.fps
+    cues = json.load(open(_asset(rcp.cues)))
+    r = core.plate_radius(frame_w, frame_h, rcp.plate_frac, rcp.plate_fit)
+    m = rcp.col_margin
+    cols = {"L": (-frame_w / 2 + m, -r - m), "R": (r + m, frame_w / 2 - m)}
+    y_lo, y_hi = -frame_h / 2 + m, frame_h / 2 - m
+
+    ink = make_emission_material("lyric_ink", core.hex_lin(rcp.vein_hex))
+    black = core.hex_lin("#000000")
+    orange = core.hex_lin(rcp.haha_orange_hex)
+    trace_f = max(1, round(rcp.trace_secs * fps))
+    retract_f = max(1, round(rcp.retract_secs * fps))
+    hold_f = max(0, round(rcp.word_hold_secs * fps))
+    haha_fade_f = max(1, round(rcp.haha_fade_secs * fps))
+    haha_disappear_f = max(1, round(rcp.haha_disappear_secs * fps))
+
+    n_words = 0
+    for cue in cues:
+        mask, (gw, gh), (fw_px, fh_px) = load_mask_aspect(
+            _asset(cue["png"]), rcp.lyrics_grid, rcp.alpha_thresh)
+        edges = plate.edge_points(mask)
+        if not edges:
+            continue
+        n_fil = min(rcp.lyrics_fil_cap, max(300, len(edges) * 3))
+        fils_grid = plate.simulate_stamp(mask, edges, n_fil, _rng)
+
+        x0c, x1c = cols[cue["side"]]
+        scale = min((x1c - x0c) / gw, (y_hi - y_lo) / gh)
+        world_h = gh * scale
+        cx_world = (x0c + x1c) / 2.0
+        yc_lo, yc_hi = y_lo + world_h / 2.0, y_hi - world_h / 2.0
+        cy_world = yc_lo + (yc_hi - yc_lo) * cue.get("ypos", 0.5)
+
+        def to_world(col, row):
+            return (cx_world + (col - gw / 2.0) * scale,
+                    cy_world + (row - gh / 2.0) * scale)
+
+        def px_to_grid_box(box):
+            x0, y0, x1, y1 = box
+            c0 = x0 / max(1, fw_px - 1) * (gw - 1)
+            c1 = x1 / max(1, fw_px - 1) * (gw - 1)
+            ra = (fh_px - 1 - y0) / max(1, fh_px - 1) * (gh - 1)   # top pixel -> higher grid row
+            rb = (fh_px - 1 - y1) / max(1, fh_px - 1) * (gh - 1)
+            return (min(c0, c1), max(c0, c1), min(ra, rb), max(ra, rb))
+
+        wboxes = [px_to_grid_box(w["box"]) for w in cue["words"]]
+        groups = [[] for _ in wboxes]
+        for gp in fils_grid:
+            sc, sr = gp[0]
+            idx = None
+            for i, (c0, c1, r0, r1) in enumerate(wboxes):
+                if c0 <= sc <= c1 and r0 <= sr <= r1:
+                    idx = i
+                    break
+            if idx is None:
+                idx = min(range(len(wboxes)),
+                          key=lambda i: ((wboxes[i][0] + wboxes[i][1]) / 2 - sc) ** 2
+                                        + ((wboxes[i][2] + wboxes[i][3]) / 2 - sr) ** 2)
+            groups[idx].append(gp)
+
+        def build_obj(name, fils, mat):
+            world_fils = [([to_world(c, r) for (c, r) in gp], plate.taper_radii(len(gp)))
+                          for gp in fils]
+            return make_word_object(name, world_fils, rcp.lyrics_bevel, mat)
+
+        for i, w in enumerate(cue["words"]):
+            grp = groups[i]
+            if not grp:
+                continue
+            birth = max(1, round(w["start"] * fps))
+            leave = round(w["end"] * fps) + hold_f          # per-word disappearance trigger
+            letters = "".join(ch for ch in w["w"].lower() if ch.isalpha())
+
+            if rcp.haha_word in letters:
+                # split the letters ("Haha") from trailing punctuation (the comma): the letters
+                # persist, drift to orange and keep growing outward; the comma un-traces like any word.
+                cb = px_to_grid_box(w.get("corebox", w["box"]))
+                core_fils = [gp for gp in grp if cb[0] <= gp[0][0] <= cb[1]]
+                rest_fils = [gp for gp in grp if not (cb[0] <= gp[0][0] <= cb[1])]
+                if core_fils:
+                    # turn black -> orange, then slowly un-trace away over ~haha_disappear_secs
+                    mat = make_emission_material(f"haha_{cue['id']}", black)
+                    obj, cu = build_obj(f"haha_{cue['id']}", core_fils, mat); n_words += 1
+                    _draw_in(cu, birth, trace_f)
+                    ci = _emission_color_input(mat)
+                    ci.default_value = black
+                    ci.keyframe_insert("default_value", frame=leave)
+                    ci.default_value = orange
+                    ci.keyframe_insert("default_value", frame=leave + haha_fade_f)
+                    if not cue.get("haha_stay"):
+                        _retract(cu, birth, trace_f, leave, haha_disappear_f)
+                    # else: the final Haha stays drawn (bevel held at 1) to the song's end
+                if rest_fils:
+                    obj, cu = build_obj(f"lyr_{cue['id']}_{i}p", rest_fils, ink); n_words += 1
+                    _draw_in(cu, birth, trace_f)
+                    _retract(cu, birth, trace_f, leave, retract_f)
+            else:
+                obj, cu = build_obj(f"lyr_{cue['id']}_{i}", grp, ink); n_words += 1
+                _draw_in(cu, birth, trace_f)
+                _retract(cu, birth, trace_f, leave, retract_f)
+    print(f"treatment=lyrics cues={len(cues)} words={n_words}")
+
+
 # ---------------- encode ----------------
 def encode(rcp, out_dir):
     if rcp.encode == "none":
@@ -483,6 +655,11 @@ def build_scene(rcp):
                         tl["reveal_frames"], tl["stamp_grow"], tl["stamp_bucket"])
         print(f"treatment={rcp.treatment} edges={len(edges)} fils={len(stamp_fils)}")
 
+    elif rcp.treatment == "lyrics":
+        setup_world(rcp, grey=np.array([0.9, 0.9, 0.9]))   # transparent -> returns early
+        setup_camera(rcp)
+        build_lyrics(rcp, frame_w, frame_h, total)
+
     else:
         raise ValueError(f"unhandled treatment {rcp.treatment!r}")
 
@@ -506,7 +683,24 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
     scene = bpy.context.scene
 
-    if "--last" in args:
+    respct = int(get_opt(args, "--respct", 100))
+
+    if "--frame" in args:                       # single arbitrary frame at --respct
+        setup_render(rcp, out_dir, respct)
+        f = max(1, int(get_opt(args, "--frame")))
+        scene.frame_set(f)
+        scene.render.filepath = os.path.join(out_dir, f"frame_{f:05d}")
+        bpy.ops.render.render(write_still=True)
+    elif "--range" in args:                     # frames A..B (inclusive) at --respct, step --step
+        setup_render(rcp, out_dir, respct)
+        i = args.index("--range")
+        a, b = int(args[i + 1]), int(args[i + 2])
+        step = int(get_opt(args, "--step", 1))
+        for f in range(max(1, a), b + 1, step):
+            scene.frame_set(f)
+            scene.render.filepath = os.path.join(out_dir, f"frame_{f:05d}")
+            bpy.ops.render.render(write_still=True)
+    elif "--last" in args:
         setup_render(rcp, out_dir, 100)
         scene.frame_set(rcp.total_frames)
         scene.render.filepath = os.path.join(out_dir, "last_frame")

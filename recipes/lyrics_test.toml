@@ -1,0 +1,9 @@
+# Quick lyrics test: 30fps, render at --respct 40 for speed. Full song length so absolute cue
+# times land on the right frames. Transparent film (composite over the plate frames afterwards).
+name = "lyrics_test"
+treatment = "lyrics"
+aspect = "landscape"
+fps = 30
+duration_sec = 193.633
+cues = "tools/cues.json"
+encode = "none"

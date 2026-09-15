@@ -53,6 +53,7 @@ DEFAULT_TIMELINE = {
         "stamp_bucket":  75 / 11580,
         "bloom_grow":    480 / 11580,
     },
+    "lyrics": {},        # cue-driven: per-word times come from the cues file, not fractions
 }
 
 TREATMENTS = set(DEFAULT_TIMELINE)
@@ -70,6 +71,7 @@ TREATMENT_DEFAULTS = {
                           bloom_palette_darks=("#1c1b17", "#262521", "#2f3a26",
                                                "#241f1b", "#1f302e", "#33322c"),
                           vein_hex="#f4f3ee"),
+    "lyrics":        dict(background="transparent", encode="none", vein_hex="#000000"),
 }
 
 
@@ -107,6 +109,19 @@ class Recipe:
     vein_hex: str = "#f4f3ee"
     # reveal image sample grid
     img_grid: int = 700
+    # lyrics treatment
+    cues: str = ""                # path to cues.json (per-cue text/box/timing/side)
+    lyrics_grid: int = 900        # long-side sampling of each lyric mask (thin strokes need more)
+    lyrics_bevel: float = 0.008   # stroke tube radius (world) for lyric filaments
+    lyrics_fil_cap: int = 2200    # max filaments per cue
+    trace_secs: float = 1.10      # per-word draw-in duration (matches retract speed)
+    retract_secs: float = 1.10    # per-word un-trace duration when it leaves (long, gentle)
+    word_hold_secs: float = 1.20  # how long a word lingers after it's sung before it un-traces
+    col_margin: float = 0.16      # world margin around each side column
+    haha_word: str = "haha"        # the word that turns orange (comma dropped)
+    haha_fade_secs: float = 3.0    # black -> orange colour transition
+    haha_orange_hex: str = "#f2b25a"
+    haha_disappear_secs: float = 10.0   # then slowly un-traces away over this long
     # timeline (fractions of total frames); filled from DEFAULT_TIMELINE if omitted
     timeline: dict = field(default_factory=dict)
     # encode / output
