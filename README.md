@@ -1,13 +1,13 @@
 # rq-100pieces-viz
 
 Recipe-driven, headless-Blender pipeline that renders petri-dish "bloom reveal" music
-videos for **The 100** (starting with the *Haha* single). Soft "fluffy bloom" colonies
+videos as used in Robocobra Quartet's *Hundred Pieces* music videos. (starting with the *Haha* single). Soft "fluffy bloom" colonies
 grow onto a dish to reconstruct a song's artwork, then dissolve away to reveal the real
 photograph underneath — plus stamp-drawing and overlay variants of the same visual world.
 
 Everything a song needs is a small **recipe** (a plate image + a timeline + a few knobs), so
 new songs and new formats are data, not new copies of the code.
-
+:wq
 ## Requirements
 
 - [Blender](https://www.blender.org/) 5.x — the engine runs in Blender's bundled Python
