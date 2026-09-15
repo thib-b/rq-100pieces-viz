@@ -6,5 +6,5 @@ treatment = "lyrics"
 aspect = "landscape"
 fps = 60
 duration_sec = 193.6333
-cues = "tools/cues.json"
+cues = "tools/haha_cues.json"
 encode = "none"

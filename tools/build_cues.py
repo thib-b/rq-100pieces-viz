@@ -86,10 +86,10 @@ def sanitize(words):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--layout", default=str(REPO / "tools" / "lyrics_layout.json"))
-    ap.add_argument("--align", default=str(REPO / "tools" / "align_words_large.json"))
-    ap.add_argument("--fixes", default=str(REPO / "tools" / "time_fixes.json"))
-    ap.add_argument("--out", default=str(REPO / "tools" / "cues.json"))
+    ap.add_argument("--layout", default=str(REPO / "tools" / "haha_lyrics_layout.json"))
+    ap.add_argument("--align", default=str(REPO / "tools" / "haha_align_words_large.json"))
+    ap.add_argument("--fixes", default=str(REPO / "tools" / "haha_time_fixes.json"))
+    ap.add_argument("--out", default=str(REPO / "tools" / "haha_cues.json"))
     ap.add_argument("--placeholder", action="store_true")
     args = ap.parse_args()
 

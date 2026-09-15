@@ -2,7 +2,7 @@
  {
   "id": 0,
   "text": "Who will betray me?",
-  "png": "plates/lyrics/cue_00.png",
+  "png": "plates/haha_lyrics/cue_00.png",
   "W": 700,
   "H": 560,
   "haha": false,
@@ -85,7 +85,7 @@
  {
   "id": 1,
   "text": "Build a bridge from the skulls of my enemies,",
-  "png": "plates/lyrics/cue_01.png",
+  "png": "plates/haha_lyrics/cue_01.png",
   "W": 700,
   "H": 1072,
   "haha": false,
@@ -253,7 +253,7 @@
  {
   "id": 2,
   "text": "Good luck to everybody, hope it works out for them.",
-  "png": "plates/lyrics/cue_02.png",
+  "png": "plates/haha_lyrics/cue_02.png",
   "W": 700,
   "H": 1026,
   "haha": false,
@@ -438,7 +438,7 @@
  {
   "id": 3,
   "text": "Good luck to everyone!",
-  "png": "plates/lyrics/cue_03.png",
+  "png": "plates/haha_lyrics/cue_03.png",
   "W": 700,
   "H": 560,
   "haha": false,
@@ -521,7 +521,7 @@
  {
   "id": 4,
   "text": "Feed a cold, starve a fever,",
-  "png": "plates/lyrics/cue_04.png",
+  "png": "plates/haha_lyrics/cue_04.png",
   "W": 700,
   "H": 731,
   "haha": false,
@@ -638,7 +638,7 @@
  {
   "id": 5,
   "text": "Go south for the winter.",
-  "png": "plates/lyrics/cue_05.png",
+  "png": "plates/haha_lyrics/cue_05.png",
   "W": 700,
   "H": 560,
   "haha": false,
@@ -738,7 +738,7 @@
  {
   "id": 6,
   "text": "Feed a cold, starve a fever,",
-  "png": "plates/lyrics/cue_06.png",
+  "png": "plates/haha_lyrics/cue_06.png",
   "W": 700,
   "H": 731,
   "haha": false,
@@ -855,7 +855,7 @@
  {
   "id": 7,
   "text": "Go south.",
-  "png": "plates/lyrics/cue_07.png",
+  "png": "plates/haha_lyrics/cue_07.png",
   "W": 700,
   "H": 219,
   "haha": false,
@@ -904,7 +904,7 @@
  {
   "id": 8,
   "text": "O, my heartbeat pounds in my ear,",
-  "png": "plates/lyrics/cue_08.png",
+  "png": "plates/haha_lyrics/cue_08.png",
   "W": 700,
   "H": 731,
   "haha": false,
@@ -1038,7 +1038,7 @@
  {
   "id": 9,
   "text": "And the words skate across my mind:",
-  "png": "plates/lyrics/cue_09.png",
+  "png": "plates/haha_lyrics/cue_09.png",
   "W": 700,
   "H": 901,
   "haha": false,
@@ -1172,7 +1172,7 @@
  {
   "id": 10,
   "text": "Who will betray me?",
-  "png": "plates/lyrics/cue_10.png",
+  "png": "plates/haha_lyrics/cue_10.png",
   "W": 700,
   "H": 560,
   "haha": false,
@@ -1255,7 +1255,7 @@
  {
   "id": 11,
   "text": "A fully grown adult acting like a baby.",
-  "png": "plates/lyrics/cue_11.png",
+  "png": "plates/haha_lyrics/cue_11.png",
   "W": 700,
   "H": 901,
   "haha": false,
@@ -1406,7 +1406,7 @@
  {
   "id": 12,
   "text": "Haha, you've got to laugh,",
-  "png": "plates/lyrics/cue_12.png",
+  "png": "plates/haha_lyrics/cue_12.png",
   "W": 700,
   "H": 560,
   "haha": true,
@@ -1506,7 +1506,7 @@
  {
   "id": 13,
   "text": "Rejoice - at last, at last.",
-  "png": "plates/lyrics/cue_13.png",
+  "png": "plates/haha_lyrics/cue_13.png",
   "W": 700,
   "H": 560,
   "haha": false,
@@ -1623,7 +1623,7 @@
  {
   "id": 14,
   "text": "Feed a cold, starve a fever,",
-  "png": "plates/lyrics/cue_14.png",
+  "png": "plates/haha_lyrics/cue_14.png",
   "W": 700,
   "H": 731,
   "haha": false,
@@ -1740,7 +1740,7 @@
  {
   "id": 15,
   "text": "Go south for the winter.",
-  "png": "plates/lyrics/cue_15.png",
+  "png": "plates/haha_lyrics/cue_15.png",
   "W": 700,
   "H": 560,
   "haha": false,
@@ -1840,7 +1840,7 @@
  {
   "id": 16,
   "text": "Feed a cold, starve a fever",
-  "png": "plates/lyrics/cue_16.png",
+  "png": "plates/haha_lyrics/cue_16.png",
   "W": 700,
   "H": 731,
   "haha": false,
@@ -1957,7 +1957,7 @@
  {
   "id": 17,
   "text": "Go south.",
-  "png": "plates/lyrics/cue_17.png",
+  "png": "plates/haha_lyrics/cue_17.png",
   "W": 700,
   "H": 219,
   "haha": false,
@@ -2006,7 +2006,7 @@
  {
   "id": 18,
   "text": "O, my heartbeat pounds in my ear,",
-  "png": "plates/lyrics/cue_18.png",
+  "png": "plates/haha_lyrics/cue_18.png",
   "W": 700,
   "H": 731,
   "haha": false,
@@ -2140,7 +2140,7 @@
  {
   "id": 19,
   "text": "And the words skate across my mind,",
-  "png": "plates/lyrics/cue_19.png",
+  "png": "plates/haha_lyrics/cue_19.png",
   "W": 700,
   "H": 901,
   "haha": false,
@@ -2274,7 +2274,7 @@
  {
   "id": 20,
   "text": "So I say them aloud:",
-  "png": "plates/lyrics/cue_20.png",
+  "png": "plates/haha_lyrics/cue_20.png",
   "W": 700,
   "H": 560,
   "haha": false,
@@ -2374,7 +2374,7 @@
  {
   "id": 21,
   "text": "Always tip your waiter.",
-  "png": "plates/lyrics/cue_21.png",
+  "png": "plates/haha_lyrics/cue_21.png",
   "W": 700,
   "H": 560,
   "haha": false,
@@ -2457,7 +2457,7 @@
  {
   "id": 22,
   "text": "Don't buy a car.",
-  "png": "plates/lyrics/cue_22.png",
+  "png": "plates/haha_lyrics/cue_22.png",
   "W": 700,
   "H": 389,
   "haha": false,
@@ -2540,7 +2540,7 @@
  {
   "id": 23,
   "text": "In fact, don't even learn how to drive.",
-  "png": "plates/lyrics/cue_23.png",
+  "png": "plates/haha_lyrics/cue_23.png",
   "W": 700,
   "H": 731,
   "haha": false,
@@ -2691,7 +2691,7 @@
  {
   "id": 24,
   "text": "Don't have kids.",
-  "png": "plates/lyrics/cue_24.png",
+  "png": "plates/haha_lyrics/cue_24.png",
   "W": 700,
   "H": 389,
   "haha": false,
@@ -2757,7 +2757,7 @@
  {
   "id": 25,
   "text": "Learn how to be good with money.",
-  "png": "plates/lyrics/cue_25.png",
+  "png": "plates/haha_lyrics/cue_25.png",
   "W": 700,
   "H": 731,
   "haha": false,
@@ -2891,7 +2891,7 @@
  {
   "id": 26,
   "text": "Always walk on the side of the road where it's sunny.",
-  "png": "plates/lyrics/cue_26.png",
+  "png": "plates/haha_lyrics/cue_26.png",
   "W": 700,
   "H": 1072,
   "haha": false,
@@ -3093,7 +3093,7 @@
  {
   "id": 27,
   "text": "Skip the ads.",
-  "png": "plates/lyrics/cue_27.png",
+  "png": "plates/haha_lyrics/cue_27.png",
   "W": 700,
   "H": 389,
   "haha": false,
@@ -3159,7 +3159,7 @@
  {
   "id": 28,
   "text": "Moisturise daily.",
-  "png": "plates/lyrics/cue_28.png",
+  "png": "plates/haha_lyrics/cue_28.png",
   "W": 700,
   "H": 389,
   "haha": false,
@@ -3208,7 +3208,7 @@
  {
   "id": 29,
   "text": "Being miserable does not increase your authenticity.",
-  "png": "plates/lyrics/cue_29.png",
+  "png": "plates/haha_lyrics/cue_29.png",
   "W": 700,
   "H": 936,
   "haha": false,
@@ -3342,7 +3342,7 @@
  {
   "id": 30,
   "text": "Do something if there's a chance that it could be funny.",
-  "png": "plates/lyrics/cue_30.png",
+  "png": "plates/haha_lyrics/cue_30.png",
   "W": 700,
   "H": 1242,
   "haha": false,
@@ -3544,7 +3544,7 @@
  {
   "id": 31,
   "text": "Where possible, avoid cruelty.",
-  "png": "plates/lyrics/cue_31.png",
+  "png": "plates/haha_lyrics/cue_31.png",
   "W": 700,
   "H": 731,
   "haha": false,
@@ -3627,7 +3627,7 @@
  {
   "id": 32,
   "text": "Feed a cold, starve a fever,",
-  "png": "plates/lyrics/cue_32.png",
+  "png": "plates/haha_lyrics/cue_32.png",
   "W": 700,
   "H": 731,
   "haha": false,
@@ -3744,7 +3744,7 @@
  {
   "id": 33,
   "text": "Go south for the winter.",
-  "png": "plates/lyrics/cue_33.png",
+  "png": "plates/haha_lyrics/cue_33.png",
   "W": 700,
   "H": 560,
   "haha": false,
@@ -3844,7 +3844,7 @@
  {
   "id": 34,
   "text": "Haha, you've got to laugh,",
-  "png": "plates/lyrics/cue_34.png",
+  "png": "plates/haha_lyrics/cue_34.png",
   "W": 700,
   "H": 560,
   "haha": true,
@@ -3944,7 +3944,7 @@
  {
   "id": 35,
   "text": "Rejoice - at last, at last.",
-  "png": "plates/lyrics/cue_35.png",
+  "png": "plates/haha_lyrics/cue_35.png",
   "W": 700,
   "H": 560,
   "haha": false,
@@ -4061,7 +4061,7 @@
  {
   "id": 36,
   "text": "Haha, you can only laugh,",
-  "png": "plates/lyrics/cue_36.png",
+  "png": "plates/haha_lyrics/cue_36.png",
   "W": 700,
   "H": 560,
   "haha": true,
@@ -4161,7 +4161,7 @@
  {
   "id": 37,
   "text": "Rejoice - at last.",
-  "png": "plates/lyrics/cue_37.png",
+  "png": "plates/haha_lyrics/cue_37.png",
   "W": 700,
   "H": 389,
   "haha": false,

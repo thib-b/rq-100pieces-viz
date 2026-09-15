@@ -9,8 +9,8 @@ Run with the project venv (has Pillow):
     .venv/bin/python tools/make_lyrics_masks.py
 
 Output:
-    plates/lyrics/cue_XX.png     RGBA masks (black glyphs, transparent ground), tight height
-    tools/lyrics_layout.json     [{id, text, haha, png, W, H, words:[{w, box:[x0,y0,x1,y1]}]}]
+    plates/haha_lyrics/cue_XX.png     RGBA masks (black glyphs, transparent ground), tight height
+    tools/haha_lyrics_layout.json     [{id, text, haha, png, W, H, words:[{w, box:[x0,y0,x1,y1]}]}]
 
 Coordinates are image pixels, origin top-left (Blender's build_lyrics flips Y).
 """
@@ -87,9 +87,9 @@ def render_cue(text):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--lyrics", default=str(REPO / "tools" / "lyrics.txt"))
-    ap.add_argument("--out", default=str(REPO / "plates" / "lyrics"))
-    ap.add_argument("--layout", default=str(REPO / "tools" / "lyrics_layout.json"))
+    ap.add_argument("--lyrics", default=str(REPO / "tools" / "haha_lyrics.txt"))
+    ap.add_argument("--out", default=str(REPO / "plates" / "haha_lyrics"))
+    ap.add_argument("--layout", default=str(REPO / "tools" / "haha_lyrics_layout.json"))
     args = ap.parse_args()
 
     cues = [ln.strip() for ln in Path(args.lyrics).read_text().splitlines() if ln.strip()]

@@ -7,7 +7,7 @@ reliable than transcribing sung vocals from scratch since we already have the ex
 Run with the align venv:
     .venv-align/bin/python tools/align_lyrics.py \
         --audio "/Users/thib/Downloads/Robocobra Quartet - Haha.wav" \
-        --lyrics tools/lyrics.txt --model medium --out tools/align_words.json
+        --lyrics tools/haha_lyrics.txt --model large-v3 --out tools/haha_align_words_large.json
 """
 import argparse
 import json
@@ -17,9 +17,9 @@ from pathlib import Path
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--audio", required=True)
-    ap.add_argument("--lyrics", default="tools/lyrics.txt")
-    ap.add_argument("--model", default="medium")
-    ap.add_argument("--out", default="tools/align_words.json")
+    ap.add_argument("--lyrics", default="tools/haha_lyrics.txt")
+    ap.add_argument("--model", default="large-v3")
+    ap.add_argument("--out", default="tools/haha_align_words_large.json")
     args = ap.parse_args()
 
     import stable_whisper
