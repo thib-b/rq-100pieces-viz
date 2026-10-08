@@ -1,0 +1,1250 @@
+[
+ {
+  "section": 0,
+  "word": "The",
+  "start": 9.85,
+  "end": 10.06,
+  "prob": 0.045,
+  "raw_start": 9.96,
+  "raw_end": 10.06,
+  "snapped": true,
+  "widened": true
+ },
+ {
+  "section": 0,
+  "word": "definitive",
+  "start": 10.06,
+  "end": 10.44,
+  "prob": 0.692
+ },
+ {
+  "section": 0,
+  "word": "version",
+  "start": 10.44,
+  "end": 10.96,
+  "prob": 0.99
+ },
+ {
+  "section": 0,
+  "word": "- the",
+  "start": 13.1,
+  "end": 13.14,
+  "prob": 0.214,
+  "raw_start": 10.96,
+  "raw_end": 13.14,
+  "snapped": true
+ },
+ {
+  "section": 0,
+  "word": "ideal.",
+  "start": 13.14,
+  "end": 13.7,
+  "prob": 0.57
+ },
+ {
+  "section": 1,
+  "word": "The",
+  "start": 15.26,
+  "end": 15.54,
+  "prob": 0.039
+ },
+ {
+  "section": 1,
+  "word": "wonderful",
+  "start": 15.54,
+  "end": 15.84,
+  "prob": 0.867
+ },
+ {
+  "section": 1,
+  "word": "image",
+  "start": 15.84,
+  "end": 16.3,
+  "prob": 0.964
+ },
+ {
+  "section": 1,
+  "word": "- It's",
+  "start": 18.24,
+  "end": 18.68,
+  "prob": 0.405,
+  "raw_start": 16.3,
+  "raw_end": 18.68,
+  "snapped": true
+ },
+ {
+  "section": 1,
+  "word": "finally",
+  "start": 18.76,
+  "end": 18.88,
+  "prob": 0.993
+ },
+ {
+  "section": 1,
+  "word": "real.",
+  "start": 18.88,
+  "end": 19.6,
+  "prob": 0.649
+ },
+ {
+  "section": 2,
+  "word": "Through",
+  "start": 21.42,
+  "end": 21.8,
+  "prob": 0.085
+ },
+ {
+  "section": 2,
+  "word": "the",
+  "start": 21.8,
+  "end": 21.98,
+  "prob": 0.996
+ },
+ {
+  "section": 2,
+  "word": "Claude",
+  "start": 21.98,
+  "end": 22.42,
+  "prob": 0.529
+ },
+ {
+  "section": 2,
+  "word": "glass",
+  "start": 22.42,
+  "end": 22.7,
+  "prob": 0.525
+ },
+ {
+  "section": 2,
+  "word": "it's",
+  "start": 24.53,
+  "end": 24.92,
+  "prob": 0.512,
+  "raw_start": 22.7,
+  "raw_end": 24.92,
+  "snapped": true
+ },
+ {
+  "section": 2,
+  "word": "hard",
+  "start": 24.92,
+  "end": 25.1,
+  "prob": 0.994
+ },
+ {
+  "section": 2,
+  "word": "to",
+  "start": 25.1,
+  "end": 25.32,
+  "prob": 0.994
+ },
+ {
+  "section": 2,
+  "word": "make",
+  "start": 25.32,
+  "end": 25.48,
+  "prob": 0.997
+ },
+ {
+  "section": 2,
+  "word": "anything",
+  "start": 25.48,
+  "end": 25.88,
+  "prob": 0.994
+ },
+ {
+  "section": 2,
+  "word": "new",
+  "start": 25.88,
+  "end": 26.2,
+  "prob": 0.988
+ },
+ {
+  "section": 2,
+  "word": "last,",
+  "start": 26.2,
+  "end": 26.86,
+  "prob": 0.514
+ },
+ {
+  "section": 3,
+  "word": "Copper",
+  "start": 29.22,
+  "end": 29.76,
+  "prob": 0.808
+ },
+ {
+  "section": 3,
+  "word": "and",
+  "start": 29.78,
+  "end": 29.96,
+  "prob": 0.997
+ },
+ {
+  "section": 3,
+  "word": "gold",
+  "start": 29.96,
+  "end": 30.24,
+  "prob": 0.981
+ },
+ {
+  "section": 3,
+  "word": "couldn't",
+  "start": 32.44,
+  "end": 32.9,
+  "prob": 0.499,
+  "raw_start": 30.24,
+  "raw_end": 32.94,
+  "snapped": true
+ },
+ {
+  "section": 3,
+  "word": "corrode",
+  "start": 33.02,
+  "end": 33.64,
+  "prob": 0.968,
+  "raw_start": 32.94,
+  "raw_end": 33.64,
+  "snapped": true
+ },
+ {
+  "section": 4,
+  "word": "Once",
+  "start": 35.8,
+  "end": 36.4,
+  "prob": 0.805
+ },
+ {
+  "section": 4,
+  "word": "we",
+  "start": 36.4,
+  "end": 36.54,
+  "prob": 0.977
+ },
+ {
+  "section": 4,
+  "word": "aimed",
+  "start": 36.54,
+  "end": 37.02,
+  "prob": 0.975
+ },
+ {
+  "section": 5,
+  "word": "to",
+  "start": 38.76,
+  "end": 39.08,
+  "prob": 0.301
+ },
+ {
+  "section": 5,
+  "word": "rule",
+  "start": 39.08,
+  "end": 39.2,
+  "prob": 0.992
+ },
+ {
+  "section": 5,
+  "word": "the",
+  "start": 39.2,
+  "end": 39.54,
+  "prob": 0.999
+ },
+ {
+  "section": 5,
+  "word": "world",
+  "start": 39.54,
+  "end": 40.04,
+  "prob": 0.982
+ },
+ {
+  "section": 6,
+  "word": "Now",
+  "start": 41.19,
+  "end": 41.35,
+  "prob": 0.849
+ },
+ {
+  "section": 6,
+  "word": "we're",
+  "start": 41.35,
+  "end": 41.53,
+  "prob": 0.968
+ },
+ {
+  "section": 6,
+  "word": "happy",
+  "start": 41.57,
+  "end": 41.87,
+  "prob": 0.998,
+  "raw_start": 41.79,
+  "raw_end": 41.89,
+  "snapped": true,
+  "widened": true
+ },
+ {
+  "section": 6,
+  "word": "to",
+  "start": 42.5,
+  "end": 42.58,
+  "prob": 0.901,
+  "raw_start": 41.89,
+  "raw_end": 42.75,
+  "snapped": true
+ },
+ {
+  "section": 6,
+  "word": "just",
+  "start": 42.95,
+  "end": 43.09,
+  "prob": 0.99
+ },
+ {
+  "section": 6,
+  "word": "be",
+  "start": 43.09,
+  "end": 43.2,
+  "prob": 0.997,
+  "raw_start": 43.09,
+  "raw_end": 43.27,
+  "snapped": true
+ },
+ {
+  "section": 6,
+  "word": "involved",
+  "start": 43.27,
+  "end": 43.72,
+  "prob": 0.998
+ },
+ {
+  "section": 7,
+  "word": "Happy",
+  "start": 45.78,
+  "end": 46.08,
+  "prob": 0.474
+ },
+ {
+  "section": 7,
+  "word": "to",
+  "start": 46.08,
+  "end": 46.18,
+  "prob": 0.999
+ },
+ {
+  "section": 7,
+  "word": "be",
+  "start": 46.18,
+  "end": 46.32,
+  "prob": 0.999
+ },
+ {
+  "section": 7,
+  "word": "thought",
+  "start": 46.32,
+  "end": 46.6,
+  "prob": 0.98
+ },
+ {
+  "section": 7,
+  "word": "of",
+  "start": 46.6,
+  "end": 46.82,
+  "prob": 0.999
+ },
+ {
+  "section": 8,
+  "word": "Happy",
+  "start": 49.48,
+  "end": 49.72,
+  "prob": 0.789
+ },
+ {
+  "section": 8,
+  "word": "to",
+  "start": 49.72,
+  "end": 49.86,
+  "prob": 0.999
+ },
+ {
+  "section": 8,
+  "word": "dream",
+  "start": 49.86,
+  "end": 50.36,
+  "prob": 0.988
+ },
+ {
+  "section": 9,
+  "word": "Happy",
+  "start": 52.78,
+  "end": 53.0,
+  "prob": 0.866,
+  "raw_start": 52.76,
+  "raw_end": 53.0,
+  "snapped": true
+ },
+ {
+  "section": 9,
+  "word": "to",
+  "start": 53.0,
+  "end": 53.14,
+  "prob": 0.999
+ },
+ {
+  "section": 9,
+  "word": "see",
+  "start": 53.14,
+  "end": 53.42,
+  "prob": 0.999
+ },
+ {
+  "section": 9,
+  "word": "what",
+  "start": 53.42,
+  "end": 53.62,
+  "prob": 0.998
+ },
+ {
+  "section": 9,
+  "word": "can",
+  "start": 53.62,
+  "end": 53.84,
+  "prob": 0.999
+ },
+ {
+  "section": 9,
+  "word": "be",
+  "start": 53.84,
+  "end": 54.1,
+  "prob": 0.924
+ },
+ {
+  "section": 9,
+  "word": "gleaned",
+  "start": 54.1,
+  "end": 54.68,
+  "prob": 0.7
+ },
+ {
+  "section": 10,
+  "word": "What",
+  "start": 58.1,
+  "end": 58.36,
+  "prob": 0.292
+ },
+ {
+  "section": 10,
+  "word": "does",
+  "start": 58.36,
+  "end": 58.46,
+  "prob": 0.995
+ },
+ {
+  "section": 10,
+  "word": "a",
+  "start": 58.46,
+  "end": 58.66,
+  "prob": 0.981,
+  "widened": true
+ },
+ {
+  "section": 10,
+  "word": "promise",
+  "start": 58.66,
+  "end": 59.04,
+  "prob": 0.995
+ },
+ {
+  "section": 10,
+  "word": "mean?",
+  "start": 59.04,
+  "end": 59.58,
+  "prob": 0.993
+ },
+ {
+  "section": 11,
+  "word": "What",
+  "start": 65.1,
+  "end": 65.38,
+  "prob": 0.191
+ },
+ {
+  "section": 11,
+  "word": "does",
+  "start": 65.38,
+  "end": 65.48,
+  "prob": 0.988
+ },
+ {
+  "section": 11,
+  "word": "a",
+  "start": 65.48,
+  "end": 65.64,
+  "prob": 0.669,
+  "widened": true
+ },
+ {
+  "section": 11,
+  "word": "promise",
+  "start": 65.64,
+  "end": 65.94,
+  "prob": 0.894
+ },
+ {
+  "section": 11,
+  "word": "mean?",
+  "start": 65.94,
+  "end": 66.5,
+  "prob": 0.922
+ },
+ {
+  "section": 12,
+  "word": "Nothing",
+  "start": 67.35,
+  "end": 70.18,
+  "prob": 0.091,
+  "raw_start": 67.28,
+  "raw_end": 70.18,
+  "snapped": true,
+  "note": "one long held Nothing (lyric sheet); the aligner had split off a second 'nothing' at 69.3 (prob 0.026)"
+ },
+ {
+  "section": 13,
+  "word": "Nothing,",
+  "start": 72.08,
+  "end": 73.16,
+  "prob": 0.348,
+  "raw_start": 71.46,
+  "raw_end": 73.16,
+  "snapped": true
+ },
+ {
+  "section": 13,
+  "word": "nothing",
+  "start": 73.4,
+  "end": 73.8,
+  "prob": 0.299
+ },
+ {
+  "section": 14,
+  "word": "Nothing",
+  "start": 81.36,
+  "end": 82.22,
+  "prob": 0.619,
+  "from_voice": true
+ },
+ {
+  "section": 15,
+  "word": "Nothing,",
+  "start": 85.02,
+  "end": 85.8,
+  "prob": 0.323,
+  "raw_start": 84.3,
+  "raw_end": 85.8,
+  "snapped": true
+ },
+ {
+  "section": 15,
+  "word": "nothing",
+  "start": 85.92,
+  "end": 86.34,
+  "prob": 0.247
+ },
+ {
+  "section": 16,
+  "word": "What",
+  "start": 89.28,
+  "end": 89.43,
+  "prob": 0.172,
+  "raw_start": 88.71,
+  "raw_end": 89.56,
+  "snapped": true
+ },
+ {
+  "section": 16,
+  "word": "does",
+  "start": 89.48,
+  "end": 89.58,
+  "prob": 0.992,
+  "raw_start": 89.66,
+  "raw_end": 89.76,
+  "snapped": true,
+  "widened": true
+ },
+ {
+  "section": 16,
+  "word": "a",
+  "start": 89.58,
+  "end": 89.86,
+  "prob": 0.875,
+  "widened": true
+ },
+ {
+  "section": 16,
+  "word": "promise",
+  "start": 89.86,
+  "end": 90.2,
+  "prob": 0.949
+ },
+ {
+  "section": 16,
+  "word": "mean?",
+  "start": 90.2,
+  "end": 90.76,
+  "prob": 0.94
+ },
+ {
+  "section": 17,
+  "word": "Nothing",
+  "start": 92.77,
+  "end": 93.9,
+  "prob": 0.001,
+  "from_voice": true
+ },
+ {
+  "section": 18,
+  "word": "Nothing,",
+  "start": 95.13,
+  "end": 95.84,
+  "prob": 0.26,
+  "raw_start": 95.04,
+  "raw_end": 95.84,
+  "snapped": true
+ },
+ {
+  "section": 18,
+  "word": "nothing,",
+  "start": 96.14,
+  "end": 96.58,
+  "prob": 0.401
+ },
+ {
+  "section": 18,
+  "word": "nothing,",
+  "start": 96.86,
+  "end": 97.3,
+  "prob": 0.884
+ },
+ {
+  "section": 18,
+  "word": "nothing",
+  "start": 97.72,
+  "end": 97.94,
+  "prob": 0.95
+ },
+ {
+  "section": 19,
+  "word": "A",
+  "start": 102.36,
+  "end": 102.66,
+  "prob": 0.036,
+  "widened": true
+ },
+ {
+  "section": 19,
+  "word": "knock",
+  "start": 102.68,
+  "end": 102.94,
+  "prob": 0.975,
+  "raw_start": 102.66,
+  "raw_end": 102.94,
+  "snapped": true
+ },
+ {
+  "section": 19,
+  "word": "on",
+  "start": 102.94,
+  "end": 103.08,
+  "prob": 0.978
+ },
+ {
+  "section": 19,
+  "word": "the",
+  "start": 103.08,
+  "end": 103.2,
+  "prob": 0.997
+ },
+ {
+  "section": 19,
+  "word": "front",
+  "start": 103.2,
+  "end": 103.38,
+  "prob": 0.987
+ },
+ {
+  "section": 19,
+  "word": "door",
+  "start": 103.38,
+  "end": 103.66,
+  "prob": 0.994
+ },
+ {
+  "section": 19,
+  "word": "of",
+  "start": 103.66,
+  "end": 103.84,
+  "prob": 0.991
+ },
+ {
+  "section": 19,
+  "word": "your",
+  "start": 103.84,
+  "end": 104.0,
+  "prob": 0.996
+ },
+ {
+  "section": 19,
+  "word": "day:",
+  "start": 104.0,
+  "end": 104.44,
+  "prob": 0.501
+ },
+ {
+  "section": 20,
+  "word": "Fill",
+  "start": 107.34,
+  "end": 107.44,
+  "prob": 0.0
+ },
+ {
+  "section": 20,
+  "word": "out",
+  "start": 107.44,
+  "end": 107.54,
+  "prob": 0.958
+ },
+ {
+  "section": 20,
+  "word": "the",
+  "start": 107.54,
+  "end": 107.74,
+  "prob": 0.991,
+  "raw_start": 107.64,
+  "raw_end": 107.76,
+  "snapped": true,
+  "widened": true
+ },
+ {
+  "section": 20,
+  "word": "survey.",
+  "start": 107.76,
+  "end": 108.26,
+  "prob": 0.712
+ },
+ {
+  "section": 21,
+  "word": "Don't",
+  "start": 110.9,
+  "end": 111.32,
+  "prob": 0.943
+ },
+ {
+  "section": 21,
+  "word": "listen",
+  "start": 111.32,
+  "end": 111.48,
+  "prob": 0.999
+ },
+ {
+  "section": 21,
+  "word": "to",
+  "start": 111.48,
+  "end": 111.74,
+  "prob": 0.999
+ },
+ {
+  "section": 21,
+  "word": "the",
+  "start": 111.74,
+  "end": 111.86,
+  "prob": 0.999
+ },
+ {
+  "section": 21,
+  "word": "bitterness",
+  "start": 111.86,
+  "end": 112.1,
+  "prob": 0.998
+ },
+ {
+  "section": 21,
+  "word": "in",
+  "start": 112.1,
+  "end": 112.52,
+  "prob": 0.994
+ },
+ {
+  "section": 21,
+  "word": "your",
+  "start": 112.52,
+  "end": 112.7,
+  "prob": 0.999
+ },
+ {
+  "section": 21,
+  "word": "brain",
+  "start": 112.7,
+  "end": 113.14,
+  "prob": 0.999
+ },
+ {
+  "section": 22,
+  "word": "But",
+  "start": 115.42,
+  "end": 115.82,
+  "prob": 0.0
+ },
+ {
+  "section": 22,
+  "word": "a",
+  "start": 115.82,
+  "end": 115.92,
+  "prob": 0.008
+ },
+ {
+  "section": 22,
+  "word": "question",
+  "start": 115.92,
+  "end": 116.08,
+  "prob": 0.968,
+  "raw_start": 116.06,
+  "raw_end": 116.08,
+  "snapped": true,
+  "widened": true
+ },
+ {
+  "section": 22,
+  "word": "remains:",
+  "start": 116.08,
+  "end": 116.84,
+  "prob": 0.567
+ },
+ {
+  "section": 23,
+  "word": "What",
+  "start": 119.96,
+  "end": 120.42,
+  "prob": 0.214
+ },
+ {
+  "section": 23,
+  "word": "does,",
+  "start": 120.42,
+  "end": 120.98,
+  "prob": 0.556
+ },
+ {
+  "section": 23,
+  "word": "what",
+  "start": 121.14,
+  "end": 121.3,
+  "prob": 0.381,
+  "raw_start": 121.14,
+  "raw_end": 121.36,
+  "snapped": true
+ },
+ {
+  "section": 23,
+  "word": "does,",
+  "start": 121.36,
+  "end": 121.56,
+  "prob": 0.748
+ },
+ {
+  "section": 23,
+  "word": "what",
+  "start": 121.84,
+  "end": 121.96,
+  "prob": 0.839
+ },
+ {
+  "section": 23,
+  "word": "does",
+  "start": 121.96,
+  "end": 122.06,
+  "prob": 0.925
+ },
+ {
+  "section": 23,
+  "word": "a",
+  "start": 122.06,
+  "end": 122.18,
+  "prob": 0.108,
+  "widened": true
+ },
+ {
+  "section": 23,
+  "word": "promise",
+  "start": 122.18,
+  "end": 122.42,
+  "prob": 0.79
+ },
+ {
+  "section": 23,
+  "word": "mean?",
+  "start": 122.42,
+  "end": 122.97,
+  "prob": 0.918
+ },
+ {
+  "section": 24,
+  "word": "What",
+  "start": 124.76,
+  "end": 125.06,
+  "prob": 0.177
+ },
+ {
+  "section": 24,
+  "word": "does",
+  "start": 125.06,
+  "end": 125.16,
+  "prob": 0.988
+ },
+ {
+  "section": 24,
+  "word": "a",
+  "start": 125.16,
+  "end": 125.36,
+  "prob": 0.779,
+  "widened": true
+ },
+ {
+  "section": 24,
+  "word": "promise",
+  "start": 125.36,
+  "end": 125.64,
+  "prob": 0.7
+ },
+ {
+  "section": 24,
+  "word": "mean?",
+  "start": 125.64,
+  "end": 126.34,
+  "prob": 0.831
+ },
+ {
+  "section": 25,
+  "word": "Nothing",
+  "start": 127.68,
+  "end": 128.5,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 128.6,
+  "end": 129.3,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 129.32,
+  "end": 129.86,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 130.38,
+  "end": 130.82,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 130.94,
+  "end": 131.4,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 131.68,
+  "end": 132.24,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 132.44,
+  "end": 132.84,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 133.3,
+  "end": 134.0,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 134.14,
+  "end": 134.56,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 134.84,
+  "end": 135.12,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 135.52,
+  "end": 136.14,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 136.7,
+  "end": 137.08,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 137.42,
+  "end": 137.82,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 137.96,
+  "end": 138.86,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 139.04,
+  "end": 139.8,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 25,
+  "word": "nothing",
+  "start": 139.92,
+  "end": 141.5,
+  "prob": null,
+  "manual": true
+ },
+ {
+  "section": 26,
+  "word": "The",
+  "start": 229.44,
+  "end": 229.82,
+  "prob": 0.665
+ },
+ {
+  "section": 26,
+  "word": "definitive",
+  "start": 229.82,
+  "end": 230.2,
+  "prob": 0.765
+ },
+ {
+  "section": 26,
+  "word": "version",
+  "start": 230.2,
+  "end": 230.66,
+  "prob": 0.996
+ },
+ {
+  "section": 27,
+  "word": "the",
+  "start": 233.42,
+  "end": 233.66,
+  "prob": 0.027
+ },
+ {
+  "section": 27,
+  "word": "ideal.",
+  "start": 233.66,
+  "end": 234.48,
+  "prob": 0.415
+ },
+ {
+  "section": 28,
+  "word": "The",
+  "start": 237.34,
+  "end": 237.92,
+  "prob": 0.71
+ },
+ {
+  "section": 28,
+  "word": "wonderful",
+  "start": 237.92,
+  "end": 238.16,
+  "prob": 0.056
+ },
+ {
+  "section": 28,
+  "word": "image",
+  "start": 238.16,
+  "end": 238.66,
+  "prob": 0.94
+ },
+ {
+  "section": 29,
+  "word": "It's",
+  "start": 242.16,
+  "end": 242.74,
+  "prob": 0.586
+ },
+ {
+  "section": 29,
+  "word": "finally",
+  "start": 242.74,
+  "end": 243.08,
+  "prob": 0.889
+ },
+ {
+  "section": 29,
+  "word": "real.",
+  "start": 243.08,
+  "end": 243.88,
+  "prob": 0.486
+ },
+ {
+  "section": 30,
+  "word": "It's",
+  "start": 248.4,
+  "end": 248.9,
+  "prob": 0.652
+ },
+ {
+  "section": 30,
+  "word": "finally",
+  "start": 248.9,
+  "end": 249.2,
+  "prob": 0.98
+ },
+ {
+  "section": 30,
+  "word": "real.",
+  "start": 249.2,
+  "end": 249.98,
+  "prob": 0.611
+ },
+ {
+  "section": 31,
+  "word": "What",
+  "start": 278.82,
+  "end": 278.88,
+  "prob": 0.13,
+  "raw_start": 278.78,
+  "raw_end": 278.88,
+  "snapped": true
+ },
+ {
+  "section": 31,
+  "word": "does",
+  "start": 278.88,
+  "end": 279.12,
+  "prob": 0.021
+ },
+ {
+  "section": 31,
+  "word": "a",
+  "start": 279.12,
+  "end": 279.28,
+  "prob": 0.208
+ },
+ {
+  "section": 31,
+  "word": "promise",
+  "start": 279.28,
+  "end": 279.58,
+  "prob": 0.851
+ },
+ {
+  "section": 31,
+  "word": "mean?",
+  "start": 279.58,
+  "end": 280.06,
+  "prob": 0.982
+ },
+ {
+  "section": 32,
+  "word": "What",
+  "start": 285.92,
+  "end": 285.94,
+  "prob": 0.11,
+  "raw_start": 285.84,
+  "raw_end": 285.94,
+  "snapped": true
+ },
+ {
+  "section": 32,
+  "word": "does",
+  "start": 285.94,
+  "end": 286.05,
+  "prob": 0.748
+ },
+ {
+  "section": 32,
+  "word": "a",
+  "start": 286.05,
+  "end": 286.16,
+  "prob": 0.178,
+  "widened": true
+ },
+ {
+  "section": 32,
+  "word": "promise",
+  "start": 286.16,
+  "end": 286.46,
+  "prob": 0.507
+ },
+ {
+  "section": 32,
+  "word": "mean?",
+  "start": 286.46,
+  "end": 286.81,
+  "prob": 0.6
+ },
+ {
+  "section": 33,
+  "word": "Nothing",
+  "start": 289.02,
+  "end": 289.82,
+  "prob": 0.054,
+  "from_voice": true
+ },
+ {
+  "section": 34,
+  "word": "Nothing",
+  "start": 293.41,
+  "end": 294.9,
+  "prob": 0.0,
+  "from_voice": true
+ },
+ {
+  "section": 35,
+  "word": "Nothing.",
+  "start": 297.32,
+  "end": 299.31,
+  "prob": 0.008,
+  "from_voice": true
+ }
+]

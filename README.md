@@ -102,6 +102,13 @@ and `plates/haha_lyrics/`; the scripts in `tools/` are generic. Pipeline (Haha a
 # 2. forced-align the lyrics to the master audio for word timings
 #    (needs stable-ts/torch in a separate .venv-align — NOT committed)
 .venv-align/bin/python tools/align_lyrics.py --audio "Robocobra Quartet - Haha.wav"   # -> tools/haha_align_words_large.json
+#    For songs with repeats/long gaps (e.g. Nothing) align per phrase window on a demucs vocal
+#    stem instead, snapping words to the voiced frames, then check by ear in a review video:
+#      .venv-align/bin/python -m demucs --two-stems=vocals -n htdemucs_ft -o <tmp> "<song>.wav"
+#      .venv-align/bin/python tools/align_sections.py --audio <tmp>/…/vocals.wav \
+#          --sections tools/nothing_sections.json --snap-db 35 --out tools/nothing_align_words.json
+#      .venv/bin/python tools/timing_check_video.py --audio "<song>.wav" --words tools/nothing_align_words.json \
+#          --sections tools/nothing_sections.json --out renders/nothing_timing_check.mov
 
 # 3. merge masks + timings into cues (applies tools/haha_time_fixes.json, clamps durations,
 #    places lines L/R, flags the final Haha to stay)
@@ -127,10 +134,47 @@ plate's last frame for the tail (here 38 frames) so the picture lasts as long as
 set that to `audio_frames − plate_frames`. Because PCM can't live in an `.mp4`, the output is an
 `.mov` (H.264 video + PCM audio); YouTube accepts it, or re-export via DaVinci if preferred.
 
+## Nothing (section-based pipeline)
+
+"Nothing" is too long and varied for one recipe, and a full render takes hours, so it has its own
+pipeline (`songs/nothing/`, entry `nothing.py`) built so that **any one section can be
+re-rendered on its own**:
+
+- `songs/nothing/song.toml` lists the sections: start time, `style`
+  (`songs/nothing/styles/<style>.py`), `params`, `seed`. Each section owns the global frames from
+  its start to the next one's (60fps, 1-based); all write into `renders/nothing/frames/`.
+- **Deterministic:** each section draws only from its own seeded stream (`ctx.rng(...)`), keyed
+  by song + section id + seed, never global `random`/`np.random` (a test greps for it). Changing
+  `seed` rerolls just that section.
+- **Sections hand over a `State`** (what the boundary frame looks like). A style is
+  `plan(ctx)` (pure) → `exit_state(ctx, plan)` (pure) → `build(ctx, plan)` (Blender, keyframes
+  only, so any single frame renders the same as in a full run).
+- **Staleness:** each section's fingerprint covers its toml entry, its code, the inherited state
+  values it actually *reads*, its lyric words and its assets. `renders/nothing/manifest.json`
+  records the fingerprint of each complete render; an edit cascades downstream only as far as
+  sections that actually see the change.
+
+```bash
+.venv/bin/python -m songs.nothing.cli status                          # what's stale and why (no Blender)
+blender -b --python nothing.py -- render --stale                      # re-render only what changed
+blender -b --python nothing.py -- render --section verse1             # one section, full res
+blender -b --python nothing.py -- render --section verse1 --resume    # continue an interrupted one
+blender -b --python nothing.py -- render --section verse1 --respct 40 --step 30   # quick preview
+blender -b --python nothing.py -- frame 5790 --respct 40              # one frame
+blender -b --python nothing.py -- edges --section verse1              # seam frames in/out of a section
+.venv/bin/python tools/nothing_assemble.py                            # all frames + bit-exact master → .mov
+```
+
+Previews (`--respct < 100` or `--step > 1`) go to `renders/nothing/preview/` and never touch the
+manifest. Different sections can render in parallel Blender processes. `--song FILE` (before the
+command) points any of these at another song file — handy for a tiny test song.
+
 ## Layout
 
 ```
 100pieces.py        entry point (run under Blender)
+nothing.py          entry point for the Nothing section pipeline (see "Nothing" above)
+songs/nothing/      Nothing: song.toml, timeline/seeding/state/manifest (pure), styles/, build (bpy)
 engine/
   core.py           pure math: colour, aspect-ratio, warp/timeline, frame subsample
   plate.py          pure image analysis: dish detection, seeding, palette, stamp vein walk

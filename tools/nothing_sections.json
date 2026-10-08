@@ -1,0 +1,299 @@
+[
+ {
+  "start": 8.5,
+  "end": 14.6,
+  "text": "The definitive version - the ideal.",
+  "note": "verse 1"
+ },
+ {
+  "start": 14.6,
+  "end": 20.6,
+  "text": "The wonderful image - It's finally real.",
+  "note": "verse 1"
+ },
+ {
+  "start": 20.6,
+  "end": 28.3,
+  "text": "Through the Claude glass it's hard to make anything new last,",
+  "note": "verse 1"
+ },
+ {
+  "start": 28.3,
+  "end": 34.8,
+  "text": "Copper and gold couldn't corrode",
+  "note": "verse 1"
+ },
+ {
+  "start": 34.8,
+  "end": 38.1,
+  "text": "Once we aimed",
+  "note": "verse 1"
+ },
+ {
+  "start": 38.1,
+  "end": 40.75,
+  "text": "to rule the world",
+  "note": "verse 1"
+ },
+ {
+  "start": 40.75,
+  "end": 44.9,
+  "text": "Now we're happy to just be involved",
+  "note": "verse 1"
+ },
+ {
+  "start": 44.9,
+  "end": 48.3,
+  "text": "Happy to be thought of",
+  "note": "verse 1"
+ },
+ {
+  "start": 48.3,
+  "end": 51.9,
+  "text": "Happy to dream",
+  "note": "verse 1"
+ },
+ {
+  "start": 51.9,
+  "end": 56.5,
+  "text": "Happy to see what can be gleaned",
+  "note": "verse 1"
+ },
+ {
+  "start": 57.0,
+  "end": 62.5,
+  "text": "What does a promise mean?",
+  "note": "chorus 1"
+ },
+ {
+  "start": 62.5,
+  "end": 66.9,
+  "text": "What does a promise mean?",
+  "note": "repeat (not on sheet)"
+ },
+ {
+  "start": 66.9,
+  "end": 71.3,
+  "text": "Nothing",
+  "note": "loop (one held Nothing)"
+ },
+ {
+  "start": 71.3,
+  "end": 76.0,
+  "text": "Nothing, nothing",
+  "note": "loop"
+ },
+ {
+  "start": 80.5,
+  "end": 83.5,
+  "text": "Nothing",
+  "note": "loop"
+ },
+ {
+  "start": 84.3,
+  "end": 87.5,
+  "text": "Nothing, nothing",
+  "note": "loop"
+ },
+ {
+  "start": 87.5,
+  "end": 91.6,
+  "text": "What does a promise mean?",
+  "note": "repeat (not on sheet)"
+ },
+ {
+  "start": 91.6,
+  "end": 94.3,
+  "text": "Nothing",
+  "note": "loop"
+ },
+ {
+  "start": 94.3,
+  "end": 100.5,
+  "text": "Nothing, nothing, nothing, nothing",
+  "note": "loop"
+ },
+ {
+  "start": 101.0,
+  "end": 105.6,
+  "text": "A knock on the front door of your day:",
+  "note": "verse 2"
+ },
+ {
+  "start": 105.6,
+  "end": 109.8,
+  "text": "Fill out the survey.",
+  "note": "verse 2"
+ },
+ {
+  "start": 109.8,
+  "end": 114.4,
+  "text": "Don't listen to the bitterness in your brain",
+  "note": "verse 2"
+ },
+ {
+  "start": 114.4,
+  "end": 118.5,
+  "text": "But a question remains:",
+  "note": "verse 2"
+ },
+ {
+  "start": 118.5,
+  "end": 124.0,
+  "text": "What does, what does, what does a promise mean?",
+  "note": "chorus 2 (stutter heard)"
+ },
+ {
+  "start": 124.0,
+  "end": 127.3,
+  "text": "What does a promise mean?",
+  "note": "repeat (not on sheet)"
+ },
+ {
+  "start": 127.3,
+  "end": 142.3,
+  "note": "fast loop: fused from short-window transcription hits (p>=0.7); 130.38, 133.30, 136.70 interpolated — verify by ear",
+  "words": [
+   [
+    "Nothing",
+    127.68,
+    128.5
+   ],
+   [
+    "nothing",
+    128.6,
+    129.3
+   ],
+   [
+    "nothing",
+    129.32,
+    129.86
+   ],
+   [
+    "nothing",
+    130.38,
+    130.82
+   ],
+   [
+    "nothing",
+    130.94,
+    131.4
+   ],
+   [
+    "nothing",
+    131.68,
+    132.24
+   ],
+   [
+    "nothing",
+    132.44,
+    132.84
+   ],
+   [
+    "nothing",
+    133.3,
+    134.0
+   ],
+   [
+    "nothing",
+    134.14,
+    134.56
+   ],
+   [
+    "nothing",
+    134.84,
+    135.12
+   ],
+   [
+    "nothing",
+    135.52,
+    136.14
+   ],
+   [
+    "nothing",
+    136.7,
+    137.08
+   ],
+   [
+    "nothing",
+    137.42,
+    137.82
+   ],
+   [
+    "nothing",
+    137.96,
+    138.86
+   ],
+   [
+    "nothing",
+    139.04,
+    139.8
+   ],
+   [
+    "nothing",
+    139.92,
+    141.5
+   ]
+  ]
+ },
+ {
+  "start": 228.5,
+  "end": 232.2,
+  "text": "The definitive version",
+  "note": "reprise"
+ },
+ {
+  "start": 232.2,
+  "end": 236.0,
+  "text": "the ideal.",
+  "note": "reprise"
+ },
+ {
+  "start": 236.0,
+  "end": 240.5,
+  "text": "The wonderful image",
+  "note": "reprise"
+ },
+ {
+  "start": 240.5,
+  "end": 246.0,
+  "text": "It's finally real.",
+  "note": "reprise"
+ },
+ {
+  "start": 246.0,
+  "end": 252.0,
+  "text": "It's finally real.",
+  "note": "reprise repeat (not on sheet)"
+ },
+ {
+  "start": 276.0,
+  "end": 282.5,
+  "text": "What does a promise mean?",
+  "note": "outro"
+ },
+ {
+  "start": 284.5,
+  "end": 288.6,
+  "text": "What does a promise mean?",
+  "note": "outro repeat (not on sheet)"
+ },
+ {
+  "start": 288.6,
+  "end": 291.5,
+  "text": "Nothing",
+  "note": "outro"
+ },
+ {
+  "start": 291.5,
+  "end": 296.0,
+  "text": "Nothing",
+  "note": "outro, heavily processed vocal (unconfirmed word)"
+ },
+ {
+  "start": 296.0,
+  "end": 300.5,
+  "text": "Nothing.",
+  "note": "outro, heavily processed vocal (unconfirmed word)"
+ }
+]

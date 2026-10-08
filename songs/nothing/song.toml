@@ -1,0 +1,95 @@
+# Nothing — Robocobra Quartet. Section map + per-section style/params.
+#
+# Each [[section]] starts at `start` seconds (snapped to the frame grid) and runs until the next
+# one starts. A section's look comes from its `style` (songs/nothing/styles/<style>.py), its
+# `params`, and the State it inherits from the section before. `seed` picks its random stream:
+# change it to reroll just that section.
+name = "nothing"
+fps = 60
+aspect = "landscape"                 # 2048x1152
+duration_sec = 309.945601            # the master WAV, to the sample
+audio = "Robocobra Quartet - Nothing 24BIT STEREO MASTER.wav"
+words = "tools/nothing_align_words.json"
+
+[initial]                            # the State before the first frame
+background = "#f5f5f5"               # the single artwork's ground
+image = ""
+
+# ---- Scenes: the story in 3 parts. `params` here are defaults for every section in the scene. ----
+[scene.song]
+title = "1. The song — upbeat exposition, stops and interjections, ends on Nothing-nothing + accelerating claps"
+
+[scene.bridge]
+title = "2. The bridge — strings, one long tension builder"
+
+[scene.outro]
+title = "3. The outro — sleepy piano, then bass with distant lyrics, then grandiose melancholic strings"
+# lyrics: the sheet's closing lines, once each, light and translucent in the side columns;
+#         they trace in, then simply fade away in place
+params = { lyrics = { set = "outro", ink = "#ebe8f0", opacity = 0.72, fade_in = true, trace_secs = 2.4, hold_secs = 4.0, retract_secs = 4.5, groups = 1, stagger_secs = 0.0, untrace = false, clear_by = "" } }
+
+# ---- Sections (start times pinned to the audio event nearest the timestamp you gave) ----
+
+[[section]]
+id = "exposition"
+scene = "song"
+style = "plate_ratchet"              # plate + kick-locked 15° ratchet + slow zoom
+layers = ["lyrics_columns"]          # verse-1 lyrics growing in the side columns
+start = 0.0   # you: 0:00 — start
+
+[[section]]
+id = "first_bridge"
+scene = "song"
+style = "plate_ratchet"              # continues; the fall into the white puff lands at 1:39.335
+layers = ["lyrics_columns"]
+start = 76.75   # you: 1:17 — all bands jump +16-21 dB at 76.75
+
+[[section]]
+id = "verse2"
+scene = "song"
+style = "typed_lyrics"               # verse 2 typed, one line at a time, on white
+start = 99.335   # you: 1:37/1:39 — the landing: band back in on this downbeat after the 2-beat stop (cues.toml)
+
+[[section]]
+id = "nothing2"
+scene = "song"
+style = "nothing_flips"              # NOTHING typed + 11 negative flips on the sung Nothings
+start = 127.7286   # you: 2:08 — the typed NOTHING: grid 8th 304 minus the 50 ms vocal lead (cues.toml)
+
+[[section]]
+id = "claps"
+scene = "song"
+style = "nothing_flips"              # hold, then 12 flips on the clap 16ths fading to white
+start = 137.13   # you: 2:18 — the mix stops on grid 8th 327 (cues.toml music_stop)
+
+[[section]]
+id = "strings_bridge"
+scene = "bridge"
+style = "slime_cover"                 # black slime mould grows up from the bottom → black
+start = 140.636   # you: 2:22 — the drop: bass + kick enter (bass stem -52 → -15 dB), right after the last clap (cues.toml)
+
+[[section]]
+id = "sleepy_piano"
+scene = "outro"
+style = "plate_colonies"              # the plate's growths regrow on black, on the piano phrases
+start = 178.1   # you: 2:58 — highs drop 15 dB at 178.14, mids at 178.04
+
+[[section]]
+id = "outro_bass"
+scene = "outro"
+style = "droste_zoom"                 # the Droste plate: endless zoom into the plate's own puff
+layers = ["lyrics_columns"]          # closing lyrics as smoke
+start = 202.97   # you: 3:23 — bass + highs jump +27-29 dB at 202.97
+
+[[section]]
+id = "strings_outro"
+scene = "outro"
+style = "droste_zoom"                 # zoom + log-spiral nesting + clockwise roll
+layers = ["lyrics_columns"]          # closing lyrics as smoke
+start = 252.06   # you: 4:13 — highs +12 dB at 252.06; weakest cue — check by ear
+
+[[section]]
+id = "end_resonance"
+scene = "outro"
+style = "droste_zoom"                 # the zoom carries on while fading to black
+start = 302.85   # you: 5:03 — mix falls 20 dB at 302.85 into the ring-out

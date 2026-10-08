@@ -23,3 +23,6 @@ venv/
 
 # macOS
 .DS_Store
+
+# Song master WAVs dropped at the repo root for reference (never commit)
+/*.wav

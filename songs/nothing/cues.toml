@@ -1,0 +1,37 @@
+# Nothing — musical cue grid, measured from the master (see songs/nothing/STORYBOARD.md).
+# Styles read cue times from here (via songs/nothing/cues.py) instead of hard-coding seconds.
+
+[grid]
+# The track is click-locked: 154 bpm on the 8th-note grid = 77 bpm as felt (kick 1 & 3, snare 2 & 4).
+# Fitted over 0:09–1:37 by comb filtering the onset envelope; holds within ±15 ms to 5:02.
+eighth = 0.38964            # s per 8th note
+eighth0 = 9.328             # 8th-note index 0 (s); 8th n is at eighth0 + n * eighth
+downbeat_mod = 7            # bar downbeats are the 8ths with n % 8 == 7 (e.g. n=7 → 12.0555)
+
+[scene1]
+ratchet_first_move = 10.4969   # beat 3: the first 15° step starts moving here …
+ratchet_first_land = 12.0555   # … and lands on this downbeat; then every 2 beats (beats 1 & 3)
+ratchet_last_land = 99.335     # the 57th landing = the landing in the white puff
+zoom_accel_start = 94.659      # beat 3 of the bar before the stop ("1:34")
+band_stop = [96.997, 98.555]   # the 2-beat full stop (drums + bass out)
+landing = 99.335               # downbeat: full band back in, verse 2 visuals start
+
+# The fast "Nothing" loop: one Nothing per beat, each sung on the "&" ~50 ms ahead of the grid.
+nothing_vocal_lead = 0.050
+nothing_typed_eighth = 304     # grid 8th index of the first, typed NOTHING (≈ 2:07.73)
+nothing_flip_eighths = [306, 308, 310, 312, 314, 316, 318, 320, 322, 324, 326]   # 11 flips
+music_stop = 137.130           # grid 8th 327: the mix stops (claps section starts)
+
+# Claps: after the stop the hand claps build up — sparse and quiet from 2:17.55, tightening into
+# continuous loud 32nds from 2:19.3 — until the bass and kick come in at 2:20.636 (the bass stem
+# jumps -52 → -15 dB). Every hit detected on the demucs "other" stem (clap band, per 32nd slot,
+# contrast > 9 dB over the gap before it), at slot + the measured +28.5 ms clap lag. One flip
+# per clap, all finished before the bass; the bridge opens on white as the bass enters.
+clap_hits = [137.5477, 137.7425, 137.9373, 138.0347, 138.1321, 138.3269, 138.4244, 138.5218, 138.7166, 138.9114, 139.0088, 139.1062, 139.2036, 139.3010, 139.3984, 139.4959, 139.5933, 139.6907, 139.7881, 139.8855, 139.9829, 140.0803, 140.1777, 140.2751, 140.3726, 140.4700, 140.5674]
+strings_bridge = 140.636
+
+[scene3]
+# Sleepy piano phrase starts (first note of each phrase, from the instrumental stem) — each one
+# sets the next of the plate's colonies growing. Detected onsets are soft: check by ear.
+piano_onsets = [178.212, 183.520, 187.411, 189.366, 195.597, 199.892, 202.247]
+bass_entry = 202.97
