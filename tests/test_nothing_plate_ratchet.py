@@ -79,13 +79,6 @@ def test_camera_is_continuous_and_ends_centred_on_the_puff():
     assert pr.camera_center(tl, rw) == pytest.approx(expect, abs=1e-9)
 
 
-def test_white_veil_reaches_full_white_on_the_landing():
-    tl = cues.scene1()["landing"]
-    assert pr.white_alpha(tl - P["white_fade_secs"] - 0.01) == 0.0
-    assert pr.white_alpha(tl) == 1.0
-    assert 0 < pr.white_alpha(tl - P["white_fade_secs"] / 2) < 1
-
-
 def test_scene1_plate_hands_on_blank_white_at_the_landing():
     from songs.nothing import manifest, timeline
     runs = {r.section.id: r for r in manifest.walk(timeline.load())}

@@ -1,13 +1,14 @@
 """nothing_flips — NOTHING typed in capitals, then negative flips (scene 1, 2:07.7 → 2:20.636).
 
-  2:07.73        NOTHING typed, centred, black on white (Helvetica Neue Medium, as all the lyrics)
+  2:07.73        NOTHING typed, centred, pure black on the paper (Helvetica Neue Bold, as all
+                 the lyrics; the paper is the plate's own white, songs/nothing/paper.py)
   2:08.51 → …    one negative flip per sung "Nothing" (11, on the measured "&" hits)
   2:17.13        the music stops: the picture holds (until the flips resume)
   2:17.55 → …    one flip per hand clap (27, measured — sparse, then accelerating into 32nds),
                  all done before the bass and kick come in at 2:20.636: the background keeps
-                 alternating pure black / pure white, while the TEXT fades a step closer to its
-                 background on every flip; the last flip lands on white with the text gone, and
-                 the bridge carries on in that white.
+                 alternating paper / its negative, the text pure black / pure white, fading a
+                 step more transparent on every flip; the last flip lands on the paper with the
+                 text gone, and the bridge carries on on that paper.
 
 Used by both the nothing2 and claps sections: the look is a pure function of global time
 (cues.toml), so the two join seamlessly. Colours change with constant keys (hard flips).
@@ -16,7 +17,7 @@ from __future__ import annotations
 
 from songs.nothing import cues
 
-DEPENDS = ["songs/nothing/fonts.py"]
+DEPENDS = ["songs/nothing/fonts.py", "songs/nothing/paper.py", "songs/nothing/styles/plate_ratchet.py"]
 
 DEFAULTS = {
     "word": "NOTHING",
@@ -31,25 +32,16 @@ def _p(ctx):
     return {**DEFAULTS, **ctx.params.get("nothing", {})}
 
 
-def _hex(rgb):
-    return "#" + "".join(f"{round(max(0, min(1, c)) * 255):02x}" for c in rgb)
-
-
-def _rgb(h):
-    h = h.lstrip("#")
-    return [int(h[i:i + 2], 16) / 255 for i in (0, 2, 4)]
-
-
 def colours_at(t, p=DEFAULTS):
-    """(background, text) hex at global time t. Backgrounds are always pure ink/paper; over the
-    claps the text moves k = claps/12 of the way from full contrast to its background."""
+    """(background, text, text opacity) at global time t. The background is the paper (`paper`)
+    or its negative (`ink`); the text is always the pure opposite colour, and over the claps it
+    loses k = claps/len(claps) of its opacity."""
     flips = sum(1 for f in cues.nothing_flips() if f <= t)
     claps = sum(1 for f in cues.clap_flips() if f <= t)
     k = claps / len(cues.clap_flips())
     inverted = (flips + claps) % 2 == 1
-    bg, contrast = (p["ink"], p["paper"]) if inverted else (p["paper"], p["ink"])
-    text = _hex([c + (b - c) * k for c, b in zip(_rgb(contrast), _rgb(bg))])
-    return bg, text
+    bg, text = (p["ink"], p["paper"]) if inverted else (p["paper"], p["ink"])
+    return bg, text, round(1.0 - k, 6)
 
 
 def type_frames(fps, p=DEFAULTS):
@@ -81,33 +73,36 @@ def plan(ctx):
 
 
 def exit_state(ctx, plan):
-    bg, fg = plan["end"]
-    if bg == fg:
+    bg, fg, alpha = plan["end"]
+    if alpha == 0:
         return ctx.enter.with_(background=bg, image="", mode="blank")
     return ctx.enter.with_(background=bg, image="", mode="nothing", text_colour=fg)
 
 
 def build(ctx, plan):
-    from songs.nothing import build as B
-    p = plan["params"]
-    B.set_background(plan["keys"][0][1])
-    mat, text_col = B.emission_material("nothing_ink", plan["keys"][0][2])
-    world_col = B.world_color_input()
+    import bpy
     from engine import core
+    from songs.nothing import build as B
+    from songs.nothing import fonts, paper
+    p = plan["params"]
+    B.set_background(p["paper"])
+    negative = paper.build(ctx, invertible=True)
+    mat, text_col, text_alpha = _ink_material(B, "nothing_ink", plan["keys"][0][2])
     with B.constant_keys():
-        for f, bg, fg in plan["keys"]:
-            world_col.default_value = core.hex_lin(bg)
-            world_col.keyframe_insert("default_value", frame=f)
+        for f, bg, fg, alpha in plan["keys"]:
+            negative.default_value = 1.0 if bg == p["ink"] else 0.0
+            negative.keyframe_insert("default_value", frame=f)
             text_col.default_value = core.hex_lin(fg)
             text_col.keyframe_insert("default_value", frame=f)
-    import bpy
-    B.make_constant(bpy.context.scene.world.node_tree, mat.node_tree)
-    from songs.nothing import fonts
-    medium = bpy.data.fonts.load(str(fonts.face_path()))
+            text_alpha.default_value = alpha
+            text_alpha.keyframe_insert("default_value", frame=f)
+    paper_mat = bpy.data.objects["paper"].data.materials[0]
+    B.make_constant(paper_mat.node_tree, mat.node_tree)
+    face = bpy.data.fonts.load(str(fonts.face_path()))
 
     def text(*a, **kw):
         obj = B.text_object(*a, **kw)
-        obj.data.font = medium
+        obj.data.font = face
         return obj
 
     full = text("nothing_probe", p["word"], p["size"], mat)
@@ -116,3 +111,27 @@ def build(ctx, plan):
     for si, sp in enumerate(plan["spans"]):
         obj = text(f"nothing_{si}", sp["text"], p["size"], mat, x=-w / 2, align_x="LEFT")
         B.show_between(obj, sp["first"], sp["last"])
+
+
+def _ink_material(B, name, hexstr, alpha=1.0):
+    """Flat unlit colour that can fade out: returns (material, colour socket, opacity socket — a
+    Value node's output; keyframe their default_value)."""
+    import bpy
+    from engine import core
+    mat = bpy.data.materials.new(name)
+    mat.use_nodes = True
+    B._blended(mat)
+    nt = mat.node_tree
+    nt.nodes.clear()
+    em = nt.nodes.new("ShaderNodeEmission")
+    em.inputs["Color"].default_value = core.hex_lin(hexstr)
+    val = nt.nodes.new("ShaderNodeValue")
+    val.outputs[0].default_value = alpha
+    tr = nt.nodes.new("ShaderNodeBsdfTransparent")
+    mix = nt.nodes.new("ShaderNodeMixShader")
+    out = nt.nodes.new("ShaderNodeOutputMaterial")
+    nt.links.new(val.outputs[0], mix.inputs["Fac"])
+    nt.links.new(tr.outputs["BSDF"], mix.inputs[1])
+    nt.links.new(em.outputs["Emission"], mix.inputs[2])
+    nt.links.new(mix.outputs["Shader"], out.inputs["Surface"])
+    return mat, em.inputs["Color"], val.outputs[0]

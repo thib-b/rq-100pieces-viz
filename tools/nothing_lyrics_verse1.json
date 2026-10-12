@@ -4,62 +4,62 @@
   "phrases": [
    0
   ],
-  "text": "The definitive version the ideal.",
+  "text": "THE DEFINITIVE VERSION THE IDEAL.",
   "png": "plates/nothing_lyrics/verse1_00.png",
   "W": 700,
-  "H": 731,
+  "H": 661,
   "words": [
    {
-    "w": "The",
+    "w": "THE",
     "box": [
-     236,
+     232,
      24,
-     464,
-     195
+     468,
+     177
     ],
     "start": 9.85,
     "end": 10.06
    },
    {
-    "w": "definitive",
+    "w": "DEFINITIVE",
     "box": [
-     73,
-     195,
-     627,
-     365
+     26,
+     177,
+     674,
+     331
     ],
     "start": 10.06,
     "end": 10.44
    },
    {
-    "w": "version",
+    "w": "VERSION",
     "box": [
-     128,
-     365,
-     572,
-     536
+     87,
+     331,
+     613,
+     484
     ],
     "start": 10.44,
     "end": 10.96
    },
    {
-    "w": "the",
+    "w": "THE",
     "box": [
-     71,
-     536,
-     264,
-     707
+     25,
+     484,
+     260,
+     637
     ],
     "start": 13.1,
     "end": 13.14
    },
    {
-    "w": "ideal.",
+    "w": "IDEAL.",
     "box": [
-     301,
-     536,
-     629,
-     707
+     293,
+     484,
+     675,
+     637
     ],
     "start": 13.14,
     "end": 13.7
@@ -71,73 +71,73 @@
   "phrases": [
    1
   ],
-  "text": "The wonderful image It's finally real.",
+  "text": "THE WONDERFUL IMAGE IT'S FINALLY REAL.",
   "png": "plates/nothing_lyrics/verse1_01.png",
   "W": 700,
-  "H": 901,
+  "H": 696,
   "words": [
    {
-    "w": "The",
+    "w": "THE",
     "box": [
-     236,
+     250,
      24,
-     464,
-     195
+     450,
+     154
     ],
     "start": 15.26,
     "end": 15.54
    },
    {
-    "w": "wonderful",
+    "w": "WONDERFUL",
     "box": [
-     46,
-     195,
-     654,
-     365
+     26,
+     154,
+     674,
+     283
     ],
     "start": 15.54,
     "end": 15.84
    },
    {
-    "w": "image",
+    "w": "IMAGE",
     "box": [
-     52,
-     365,
-     424,
-     536
+     78,
+     283,
+     410,
+     413
     ],
     "start": 15.84,
     "end": 16.3
    },
    {
-    "w": "It's",
+    "w": "IT'S",
     "box": [
-     460,
-     365,
-     648,
-     536
+     438,
+     283,
+     622,
+     413
     ],
     "start": 18.24,
     "end": 18.68
    },
    {
-    "w": "finally",
+    "w": "FINALLY",
     "box": [
-     172,
-     536,
-     528,
-     707
+     142,
+     413,
+     558,
+     542
     ],
     "start": 18.76,
     "end": 18.88
    },
    {
-    "w": "real.",
+    "w": "REAL.",
     "box": [
-     220,
-     707,
-     480,
-     877
+     204,
+     542,
+     496,
+     672
     ],
     "start": 18.88,
     "end": 19.6
@@ -149,128 +149,128 @@
   "phrases": [
    2
   ],
-  "text": "Through the Claude glass it's hard to make anything new last,",
+  "text": "THROUGH THE CLAUDE GLASS IT'S HARD TO MAKE ANYTHING NEW LAST,",
   "png": "plates/nothing_lyrics/verse1_02.png",
   "W": 700,
-  "H": 1413,
+  "H": 1487,
   "words": [
    {
-    "w": "Through",
+    "w": "THROUGH",
     "box": [
-     96,
+     34,
      24,
-     604,
-     195
+     666,
+     184
     ],
     "start": 21.42,
     "end": 21.8
    },
    {
-    "w": "the",
+    "w": "THE",
     "box": [
-     254,
-     195,
-     446,
-     365
+     226,
+     184,
+     474,
+     344
     ],
     "start": 21.8,
     "end": 21.98
    },
    {
-    "w": "Claude",
+    "w": "CLAUDE",
     "box": [
-     135,
-     365,
-     565,
-     536
+     92,
+     344,
+     608,
+     504
     ],
     "start": 21.98,
     "end": 22.42
    },
    {
-    "w": "glass",
+    "w": "GLASS",
     "box": [
-     80,
-     536,
-     401,
-     707
+     144,
+     504,
+     556,
+     663
     ],
     "start": 22.42,
     "end": 22.7
    },
    {
-    "w": "it's",
+    "w": "IT'S",
     "box": [
-     438,
-     536,
-     620,
-     707
+     40,
+     663,
+     267,
+     823
     ],
     "start": 24.53,
     "end": 24.92
    },
    {
-    "w": "hard",
+    "w": "HARD",
     "box": [
-     133,
-     707,
-     408,
-     877
+     301,
+     663,
+     660,
+     823
     ],
     "start": 24.92,
     "end": 25.1
    },
    {
-    "w": "to",
+    "w": "TO",
     "box": [
-     445,
-     707,
-     567,
-     877
+     64,
+     823,
+     236,
+     983
     ],
     "start": 25.1,
     "end": 25.32
    },
    {
-    "w": "make",
+    "w": "MAKE",
     "box": [
-     184,
-     877,
-     516,
-     1048
+     270,
+     823,
+     636,
+     983
     ],
     "start": 25.32,
     "end": 25.48
    },
    {
-    "w": "anything",
+    "w": "ANYTHING",
     "box": [
-     88,
-     1048,
-     612,
-     1218
+     24,
+     983,
+     676,
+     1143
     ],
     "start": 25.48,
     "end": 25.88
    },
    {
-    "w": "new",
+    "w": "NEW",
     "box": [
-     78,
-     1218,
-     330,
-     1389
+     206,
+     1143,
+     494,
+     1303
     ],
     "start": 25.88,
     "end": 26.2
    },
    {
-    "w": "last,",
+    "w": "LAST,",
     "box": [
-     367,
-     1218,
-     622,
-     1389
+     176,
+     1303,
+     524,
+     1463
     ],
     "start": 26.2,
     "end": 26.86
@@ -282,62 +282,62 @@
   "phrases": [
    3
   ],
-  "text": "Copper and gold couldn't corrode",
+  "text": "COPPER AND GOLD COULDN'T CORRODE",
   "png": "plates/nothing_lyrics/verse1_03.png",
   "W": 700,
-  "H": 731,
+  "H": 847,
   "words": [
    {
-    "w": "Copper",
+    "w": "COPPER",
     "box": [
-     123,
+     88,
      24,
-     577,
-     195
+     612,
+     184
     ],
     "start": 29.22,
     "end": 29.76
    },
    {
-    "w": "and",
+    "w": "AND",
     "box": [
-     82,
-     195,
-     312,
-     365
+     216,
+     184,
+     484,
+     344
     ],
     "start": 29.78,
     "end": 29.96
    },
    {
-    "w": "gold",
+    "w": "GOLD",
     "box": [
-     349,
-     195,
-     618,
-     365
+     172,
+     344,
+     528,
+     504
     ],
     "start": 29.96,
     "end": 30.24
    },
    {
-    "w": "couldn't",
+    "w": "COULDN'T",
     "box": [
-     102,
-     365,
-     598,
-     536
+     26,
+     504,
+     674,
+     663
     ],
     "start": 32.44,
     "end": 32.9
    },
    {
-    "w": "corrode",
+    "w": "CORRODE",
     "box": [
-     113,
-     536,
-     587,
-     707
+     32,
+     663,
+     668,
+     823
     ],
     "start": 33.02,
     "end": 33.64
@@ -350,84 +350,84 @@
    4,
    5
   ],
-  "text": "Once we aimed to rule the world",
+  "text": "ONCE WE AIMED TO RULE THE WORLD",
   "png": "plates/nothing_lyrics/verse1_04.png",
   "W": 700,
-  "H": 731,
+  "H": 901,
   "words": [
    {
-    "w": "Once",
+    "w": "ONCE",
     "box": [
-     82,
+     34,
      24,
-     404,
+     418,
      195
     ],
     "start": 35.8,
     "end": 36.4
    },
    {
-    "w": "we",
+    "w": "WE",
     "box": [
-     442,
+     456,
      24,
-     618,
+     666,
      195
     ],
     "start": 36.4,
     "end": 36.54
    },
    {
-    "w": "aimed",
+    "w": "AIMED",
     "box": [
-     84,
+     134,
      195,
-     458,
+     566,
      365
     ],
     "start": 36.54,
     "end": 37.02
    },
    {
-    "w": "to",
+    "w": "TO",
     "box": [
-     494,
-     195,
-     616,
-     365
+     61,
+     365,
+     245,
+     536
     ],
     "start": 38.76,
     "end": 39.08
    },
    {
-    "w": "rule",
+    "w": "RULE",
     "box": [
-     122,
+     282,
      365,
-     348,
+     639,
      536
     ],
     "start": 39.08,
     "end": 39.2
    },
    {
-    "w": "the",
+    "w": "THE",
     "box": [
-     386,
-     365,
-     578,
-     536
+     218,
+     536,
+     482,
+     707
     ],
     "start": 39.2,
     "end": 39.54
    },
    {
-    "w": "world",
+    "w": "WORLD",
     "box": [
-     180,
-     536,
-     520,
-     707
+     100,
+     707,
+     600,
+     877
     ],
     "start": 39.54,
     "end": 40.04
@@ -439,84 +439,84 @@
   "phrases": [
    6
   ],
-  "text": "Now we're happy to just be involved",
+  "text": "NOW WE'RE HAPPY TO JUST BE INVOLVED",
   "png": "plates/nothing_lyrics/verse1_05.png",
   "W": 700,
-  "H": 731,
+  "H": 874,
   "words": [
    {
-    "w": "Now",
+    "w": "NOW",
     "box": [
-     28,
+     192,
      24,
-     304,
-     195
+     508,
+     189
     ],
     "start": 41.19,
     "end": 41.35
    },
    {
-    "w": "we're",
+    "w": "WE'RE",
     "box": [
-     341,
-     24,
-     672,
-     195
+     142,
+     189,
+     558,
+     354
     ],
     "start": 41.35,
     "end": 41.53
    },
    {
-    "w": "happy",
+    "w": "HAPPY",
     "box": [
-     80,
-     195,
-     460,
-     365
+     24,
+     354,
+     462,
+     520
     ],
     "start": 41.57,
     "end": 41.87
    },
    {
-    "w": "to",
+    "w": "TO",
     "box": [
      498,
-     195,
-     620,
-     365
+     354,
+     676,
+     520
     ],
     "start": 42.5,
     "end": 42.58
    },
    {
-    "w": "just",
+    "w": "JUST",
     "box": [
-     144,
-     365,
-     365,
-     536
+     82,
+     520,
+     409,
+     685
     ],
     "start": 42.95,
     "end": 43.09
    },
    {
-    "w": "be",
+    "w": "BE",
     "box": [
-     402,
-     365,
-     556,
-     536
+     445,
+     520,
+     618,
+     685
     ],
     "start": 43.09,
     "end": 43.2
    },
    {
-    "w": "involved",
+    "w": "INVOLVED",
     "box": [
-     95,
-     536,
-     605,
-     707
+     26,
+     685,
+     674,
+     850
     ],
     "start": 43.27,
     "end": 43.72
@@ -528,62 +528,62 @@
   "phrases": [
    7
   ],
-  "text": "Happy to be thought of",
+  "text": "HAPPY TO BE THOUGHT OF",
   "png": "plates/nothing_lyrics/verse1_06.png",
   "W": 700,
-  "H": 560,
+  "H": 722,
   "words": [
    {
-    "w": "Happy",
+    "w": "HAPPY",
     "box": [
-     71,
+     127,
      24,
-     470,
-     195
+     573,
+     192
     ],
     "start": 45.78,
     "end": 46.08
    },
    {
-    "w": "to",
+    "w": "TO",
     "box": [
-     507,
-     24,
-     629,
-     195
+     154,
+     192,
+     334,
+     361
     ],
     "start": 46.08,
     "end": 46.18
    },
    {
-    "w": "be",
+    "w": "BE",
     "box": [
-     273,
-     195,
-     427,
-     365
+     370,
+     192,
+     546,
+     361
     ],
     "start": 46.18,
     "end": 46.32
    },
    {
-    "w": "thought",
+    "w": "THOUGHT",
     "box": [
-     36,
-     365,
-     508,
-     536
+     27,
+     361,
+     673,
+     529
     ],
     "start": 46.32,
     "end": 46.6
    },
    {
-    "w": "of",
+    "w": "OF",
     "box": [
-     544,
-     365,
-     664,
-     536
+     261,
+     529,
+     439,
+     698
     ],
     "start": 46.6,
     "end": 46.82
@@ -595,40 +595,40 @@
   "phrases": [
    8
   ],
-  "text": "Happy to dream",
+  "text": "HAPPY TO DREAM",
   "png": "plates/nothing_lyrics/verse1_07.png",
   "W": 700,
-  "H": 389,
+  "H": 560,
   "words": [
    {
-    "w": "Happy",
+    "w": "HAPPY",
     "box": [
-     71,
+     124,
      24,
-     470,
+     576,
      195
     ],
     "start": 49.48,
     "end": 49.72
    },
    {
-    "w": "to",
+    "w": "TO",
     "box": [
-     507,
-     24,
-     629,
-     195
+     258,
+     195,
+     442,
+     365
     ],
     "start": 49.72,
     "end": 49.86
    },
    {
-    "w": "dream",
+    "w": "DREAM",
     "box": [
-     156,
-     195,
-     544,
-     365
+     106,
+     365,
+     594,
+     536
     ],
     "start": 49.86,
     "end": 50.36
@@ -640,84 +640,84 @@
   "phrases": [
    9
   ],
-  "text": "Happy to see what can be gleaned",
+  "text": "HAPPY TO SEE WHAT CAN BE GLEANED",
   "png": "plates/nothing_lyrics/verse1_08.png",
   "W": 700,
-  "H": 731,
+  "H": 901,
   "words": [
    {
-    "w": "Happy",
+    "w": "HAPPY",
     "box": [
-     71,
+     124,
      24,
-     470,
+     576,
      195
     ],
     "start": 52.78,
     "end": 53.0
    },
    {
-    "w": "to",
+    "w": "TO",
     "box": [
-     507,
-     24,
-     629,
-     195
+     110,
+     195,
+     294,
+     365
     ],
     "start": 53.0,
     "end": 53.14
    },
    {
-    "w": "see",
+    "w": "SEE",
     "box": [
-     76,
+     332,
      195,
-     291,
+     590,
      365
     ],
     "start": 53.14,
     "end": 53.42
    },
    {
-    "w": "what",
+    "w": "WHAT",
     "box": [
-     328,
-     195,
-     624,
-     365
+     153,
+     365,
+     547,
+     536
     ],
     "start": 53.42,
     "end": 53.62
    },
    {
-    "w": "can",
+    "w": "CAN",
     "box": [
-     144,
-     365,
-     366,
-     536
+     99,
+     536,
+     385,
+     707
     ],
     "start": 53.62,
     "end": 53.84
    },
    {
-    "w": "be",
+    "w": "BE",
     "box": [
-     402,
-     365,
-     556,
-     536
+     422,
+     536,
+     601,
+     707
     ],
     "start": 53.84,
     "end": 54.1
    },
    {
-    "w": "gleaned",
+    "w": "GLEANED",
     "box": [
-     107,
-     536,
-     593,
-     707
+     32,
+     707,
+     668,
+     877
     ],
     "start": 54.1,
     "end": 54.68
@@ -729,61 +729,61 @@
   "phrases": [
    10
   ],
-  "text": "What does a promise mean?",
+  "text": "WHAT DOES A PROMISE MEAN?",
   "png": "plates/nothing_lyrics/verse1_09.png",
   "W": 700,
   "H": 731,
   "words": [
    {
-    "w": "What",
+    "w": "WHAT",
     "box": [
-     191,
+     153,
      24,
-     509,
+     547,
      195
     ],
     "start": 58.1,
     "end": 58.36
    },
    {
-    "w": "does",
+    "w": "DOES",
     "box": [
-     144,
+     100,
      195,
-     446,
+     473,
      365
     ],
     "start": 58.36,
     "end": 58.46
    },
    {
-    "w": "a",
+    "w": "A",
     "box": [
-     482,
+     510,
      195,
-     556,
+     600,
      365
     ],
     "start": 58.46,
     "end": 58.66
    },
    {
-    "w": "promise",
+    "w": "PROMISE",
     "box": [
-     103,
+     42,
      365,
-     597,
+     658,
      536
     ],
     "start": 58.66,
     "end": 59.04
    },
    {
-    "w": "mean?",
+    "w": "MEAN?",
     "box": [
-     145,
+     116,
      536,
-     555,
+     584,
      707
     ],
     "start": 59.04,
@@ -796,61 +796,61 @@
   "phrases": [
    11
   ],
-  "text": "What does a promise mean?",
+  "text": "WHAT DOES A PROMISE MEAN?",
   "png": "plates/nothing_lyrics/verse1_10.png",
   "W": 700,
   "H": 731,
   "words": [
    {
-    "w": "What",
+    "w": "WHAT",
     "box": [
-     191,
+     153,
      24,
-     509,
+     547,
      195
     ],
     "start": 65.1,
     "end": 65.38
    },
    {
-    "w": "does",
+    "w": "DOES",
     "box": [
-     144,
+     100,
      195,
-     446,
+     473,
      365
     ],
     "start": 65.38,
     "end": 65.48
    },
    {
-    "w": "a",
+    "w": "A",
     "box": [
-     482,
+     510,
      195,
-     556,
+     600,
      365
     ],
     "start": 65.48,
     "end": 65.64
    },
    {
-    "w": "promise",
+    "w": "PROMISE",
     "box": [
-     103,
+     42,
      365,
-     597,
+     658,
      536
     ],
     "start": 65.64,
     "end": 65.94
    },
    {
-    "w": "mean?",
+    "w": "MEAN?",
     "box": [
-     145,
+     116,
      536,
-     555,
+     584,
      707
     ],
     "start": 65.94,
@@ -863,17 +863,17 @@
   "phrases": [
    12
   ],
-  "text": "Nothing",
+  "text": "NOTHING",
   "png": "plates/nothing_lyrics/verse1_11.png",
   "W": 700,
   "H": 219,
   "words": [
    {
-    "w": "Nothing",
+    "w": "NOTHING",
     "box": [
-     110,
+     42,
      24,
-     590,
+     658,
      195
     ],
     "start": 67.35,
@@ -886,29 +886,29 @@
   "phrases": [
    13
   ],
-  "text": "Nothing, nothing",
+  "text": "NOTHING, NOTHING",
   "png": "plates/nothing_lyrics/verse1_12.png",
   "W": 700,
-  "H": 389,
+  "H": 385,
   "words": [
    {
-    "w": "Nothing,",
+    "w": "NOTHING,",
     "box": [
-     92,
+     30,
      24,
-     608,
-     195
+     670,
+     192
     ],
     "start": 72.08,
     "end": 73.16
    },
    {
-    "w": "nothing",
+    "w": "NOTHING",
     "box": [
-     120,
-     195,
-     580,
-     365
+     48,
+     192,
+     652,
+     361
     ],
     "start": 73.4,
     "end": 73.8
@@ -920,17 +920,17 @@
   "phrases": [
    14
   ],
-  "text": "Nothing",
+  "text": "NOTHING",
   "png": "plates/nothing_lyrics/verse1_13.png",
   "W": 700,
   "H": 219,
   "words": [
    {
-    "w": "Nothing",
+    "w": "NOTHING",
     "box": [
-     110,
+     42,
      24,
-     590,
+     658,
      195
     ],
     "start": 81.36,
@@ -943,29 +943,29 @@
   "phrases": [
    15
   ],
-  "text": "Nothing, nothing",
+  "text": "NOTHING, NOTHING",
   "png": "plates/nothing_lyrics/verse1_14.png",
   "W": 700,
-  "H": 389,
+  "H": 385,
   "words": [
    {
-    "w": "Nothing,",
+    "w": "NOTHING,",
     "box": [
-     92,
+     30,
      24,
-     608,
-     195
+     670,
+     192
     ],
     "start": 85.02,
     "end": 85.8
    },
    {
-    "w": "nothing",
+    "w": "NOTHING",
     "box": [
-     120,
-     195,
-     580,
-     365
+     48,
+     192,
+     652,
+     361
     ],
     "start": 85.92,
     "end": 86.34
@@ -977,61 +977,61 @@
   "phrases": [
    16
   ],
-  "text": "What does a promise mean?",
+  "text": "WHAT DOES A PROMISE MEAN?",
   "png": "plates/nothing_lyrics/verse1_15.png",
   "W": 700,
   "H": 731,
   "words": [
    {
-    "w": "What",
+    "w": "WHAT",
     "box": [
-     191,
+     153,
      24,
-     509,
+     547,
      195
     ],
     "start": 89.28,
     "end": 89.43
    },
    {
-    "w": "does",
+    "w": "DOES",
     "box": [
-     144,
+     100,
      195,
-     446,
+     473,
      365
     ],
     "start": 89.48,
     "end": 89.58
    },
    {
-    "w": "a",
+    "w": "A",
     "box": [
-     482,
+     510,
      195,
-     556,
+     600,
      365
     ],
     "start": 89.58,
     "end": 89.86
    },
    {
-    "w": "promise",
+    "w": "PROMISE",
     "box": [
-     103,
+     42,
      365,
-     597,
+     658,
      536
     ],
     "start": 89.86,
     "end": 90.2
    },
    {
-    "w": "mean?",
+    "w": "MEAN?",
     "box": [
-     145,
+     116,
      536,
-     555,
+     584,
      707
     ],
     "start": 90.2,
@@ -1044,17 +1044,17 @@
   "phrases": [
    17
   ],
-  "text": "Nothing",
+  "text": "NOTHING",
   "png": "plates/nothing_lyrics/verse1_16.png",
   "W": 700,
   "H": 219,
   "words": [
    {
-    "w": "Nothing",
+    "w": "NOTHING",
     "box": [
-     110,
+     42,
      24,
-     590,
+     658,
      195
     ],
     "start": 92.77,
@@ -1067,51 +1067,51 @@
   "phrases": [
    18
   ],
-  "text": "Nothing, nothing, nothing, nothing",
+  "text": "NOTHING, NOTHING, NOTHING, NOTHING",
   "png": "plates/nothing_lyrics/verse1_17.png",
   "W": 700,
-  "H": 731,
+  "H": 722,
   "words": [
    {
-    "w": "Nothing,",
+    "w": "NOTHING,",
     "box": [
-     92,
+     30,
      24,
-     608,
-     195
+     670,
+     192
     ],
     "start": 95.13,
     "end": 95.84
    },
    {
-    "w": "nothing,",
+    "w": "NOTHING,",
     "box": [
-     102,
-     195,
-     598,
-     365
+     30,
+     192,
+     670,
+     361
     ],
     "start": 96.14,
     "end": 96.58
    },
    {
-    "w": "nothing,",
+    "w": "NOTHING,",
     "box": [
-     102,
-     365,
-     598,
-     536
+     30,
+     361,
+     670,
+     529
     ],
     "start": 96.86,
     "end": 97.3
    },
    {
-    "w": "nothing",
+    "w": "NOTHING",
     "box": [
-     120,
-     536,
-     580,
-     707
+     48,
+     529,
+     652,
+     698
     ],
     "start": 97.72,
     "end": 97.94

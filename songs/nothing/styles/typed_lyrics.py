@@ -1,6 +1,6 @@
-"""typed_lyrics — verse 2, typed on the blank white we landed in (scene 1, 1:39 → 2:07.7).
+"""typed_lyrics — verse 2, typed on the paper we landed in (scene 1, 1:39 → 2:07.7).
 
-Helvetica Neue Medium (the weight of the verse-1 lyrics), black on white, centred, ONE LINE AT A TIME: each word's characters appear one
+Helvetica Neue Bold, ALL CAPS (as all the lyrics), pure black on the paper (songs/nothing/paper.py), centred, ONE LINE AT A TIME: each word's characters appear one
 by one, spread across the time the word is sung; a line holds until the next line starts
 typing, which erases it. The last line is erased when the section ends (the typed NOTHING).
 Long lines wrap (at word boundaries, by character count) into centred rows that type in turn.
@@ -12,7 +12,7 @@ frames (constant keys), so any single frame renders on its own.
 """
 from __future__ import annotations
 
-DEPENDS = ["songs/nothing/fonts.py"]
+DEPENDS = ["songs/nothing/fonts.py", "songs/nothing/paper.py", "songs/nothing/styles/plate_ratchet.py"]
 
 DEFAULTS = {
     "ink": "#000000",
@@ -30,7 +30,7 @@ def _p(ctx):
 
 
 def display(token):
-    return token.lstrip("-– ").strip()
+    return token.lstrip("-– ").strip().upper()
 
 
 def lines_in(words, t0, t1):
@@ -142,13 +142,15 @@ def build(ctx, plan):
     p = plan["params"]
     fw, _ = ctx.frame_size
     B.set_background(p["paper"])
+    from songs.nothing import paper
+    paper.build(ctx)
     mat, _ = B.emission_material("typed_ink", p["ink"])
     from songs.nothing import fonts
-    medium = bpy.data.fonts.load(str(fonts.face_path()))
+    face = bpy.data.fonts.load(str(fonts.face_path()))
 
     def text(*a, **kw):
         obj = B.text_object(*a, **kw)
-        obj.data.font = medium
+        obj.data.font = face
         return obj
 
     # one global size; shrink only if the widest row would exceed max_width

@@ -5,62 +5,62 @@
    26,
    27
   ],
-  "text": "The definitive version the ideal.",
+  "text": "THE DEFINITIVE VERSION THE IDEAL.",
   "png": "plates/nothing_lyrics/outro_00.png",
   "W": 700,
-  "H": 731,
+  "H": 661,
   "words": [
    {
-    "w": "The",
+    "w": "THE",
     "box": [
-     236,
+     232,
      24,
-     464,
-     195
+     468,
+     177
     ],
     "start": 229.44,
     "end": 229.82
    },
    {
-    "w": "definitive",
+    "w": "DEFINITIVE",
     "box": [
-     73,
-     195,
-     627,
-     365
+     26,
+     177,
+     674,
+     331
     ],
     "start": 229.82,
     "end": 230.2
    },
    {
-    "w": "version",
+    "w": "VERSION",
     "box": [
-     128,
-     365,
-     572,
-     536
+     87,
+     331,
+     613,
+     484
     ],
     "start": 230.2,
     "end": 230.66
    },
    {
-    "w": "the",
+    "w": "THE",
     "box": [
-     71,
-     536,
-     264,
-     707
+     25,
+     484,
+     260,
+     637
     ],
     "start": 233.42,
     "end": 233.66
    },
    {
-    "w": "ideal.",
+    "w": "IDEAL.",
     "box": [
-     301,
-     536,
-     629,
-     707
+     293,
+     484,
+     675,
+     637
     ],
     "start": 233.66,
     "end": 234.48
@@ -73,73 +73,73 @@
    28,
    29
   ],
-  "text": "The wonderful image It's finally real.",
+  "text": "THE WONDERFUL IMAGE IT'S FINALLY REAL.",
   "png": "plates/nothing_lyrics/outro_01.png",
   "W": 700,
-  "H": 901,
+  "H": 696,
   "words": [
    {
-    "w": "The",
+    "w": "THE",
     "box": [
-     236,
+     250,
      24,
-     464,
-     195
+     450,
+     154
     ],
     "start": 237.34,
     "end": 237.92
    },
    {
-    "w": "wonderful",
+    "w": "WONDERFUL",
     "box": [
-     46,
-     195,
-     654,
-     365
+     26,
+     154,
+     674,
+     283
     ],
     "start": 237.92,
     "end": 238.16
    },
    {
-    "w": "image",
+    "w": "IMAGE",
     "box": [
-     52,
-     365,
-     424,
-     536
+     78,
+     283,
+     410,
+     413
     ],
     "start": 238.16,
     "end": 238.66
    },
    {
-    "w": "It's",
+    "w": "IT'S",
     "box": [
-     460,
-     365,
-     648,
-     536
+     438,
+     283,
+     622,
+     413
     ],
     "start": 242.16,
     "end": 242.74
    },
    {
-    "w": "finally",
+    "w": "FINALLY",
     "box": [
-     172,
-     536,
-     528,
-     707
+     142,
+     413,
+     558,
+     542
     ],
     "start": 242.74,
     "end": 243.08
    },
    {
-    "w": "real.",
+    "w": "REAL.",
     "box": [
-     220,
-     707,
-     480,
-     877
+     204,
+     542,
+     496,
+     672
     ],
     "start": 243.08,
     "end": 243.88
@@ -151,61 +151,61 @@
   "phrases": [
    31
   ],
-  "text": "What does a promise mean?",
+  "text": "WHAT DOES A PROMISE MEAN?",
   "png": "plates/nothing_lyrics/outro_02.png",
   "W": 700,
   "H": 731,
   "words": [
    {
-    "w": "What",
+    "w": "WHAT",
     "box": [
-     191,
+     153,
      24,
-     509,
+     547,
      195
     ],
     "start": 278.82,
     "end": 278.88
    },
    {
-    "w": "does",
+    "w": "DOES",
     "box": [
-     144,
+     100,
      195,
-     446,
+     473,
      365
     ],
     "start": 278.88,
     "end": 279.12
    },
    {
-    "w": "a",
+    "w": "A",
     "box": [
-     482,
+     510,
      195,
-     556,
+     600,
      365
     ],
     "start": 279.12,
     "end": 279.28
    },
    {
-    "w": "promise",
+    "w": "PROMISE",
     "box": [
-     103,
+     42,
      365,
-     597,
+     658,
      536
     ],
     "start": 279.28,
     "end": 279.58
    },
    {
-    "w": "mean?",
+    "w": "MEAN?",
     "box": [
-     145,
+     116,
      536,
-     555,
+     584,
      707
     ],
     "start": 279.58,
@@ -218,17 +218,17 @@
   "phrases": [
    33
   ],
-  "text": "Nothing",
+  "text": "NOTHING",
   "png": "plates/nothing_lyrics/outro_03.png",
   "W": 700,
   "H": 219,
   "words": [
    {
-    "w": "Nothing",
+    "w": "NOTHING",
     "box": [
-     110,
+     42,
      24,
-     590,
+     658,
      195
     ],
     "start": 289.02,

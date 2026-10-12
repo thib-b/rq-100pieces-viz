@@ -6,8 +6,9 @@ Two line sets:
   outro   the lyric sheet's closing lines only, once each (sung repeats are not shown)
 
 Each line's words are the aligned tokens (tools/nothing_align_words.json), so every display word
-carries its own sung time. Masks reuse tools/make_lyrics_masks.render_cue (Helvetica Neue
-Medium, wrapped to the column, per-word boxes).
+carries its own sung time. Masks reuse tools/make_lyrics_masks.render_cue (wrapped to the
+column, per-word boxes), in Nothing's lyric face (songs/nothing/fonts.py: Helvetica Neue Bold)
+and ALL CAPS.
 
     .venv/bin/python tools/nothing_lyric_masks.py            # both sets
 
@@ -25,7 +26,7 @@ sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(REPO / "tools"))
 
 import make_lyrics_masks as mlm  # noqa: E402
-from songs.nothing import cues  # noqa: E402
+from songs.nothing import cues, fonts  # noqa: E402
 
 COL_W = 700          # mask px width = the column width (the style scales it to the column)
 # verse1: aligned windows that are one sung line on the lyric sheet (aligned separately):
@@ -36,7 +37,7 @@ OUTRO = [[26, 27], [28, 29], [31], [33]]
 
 def display(token):
     """Aligned token → display word: drop the lyric sheet's spaced dash ("- the" → "the")."""
-    return token.lstrip("-– ").strip()
+    return token.lstrip("-– ").strip().upper()
 
 
 def phrase_words(words, pi):
@@ -51,7 +52,8 @@ def verse1_lines(phrases, words):
         if not ws or ws[0]["start"] >= landing:
             continue
         prev_text = " ".join(display(w["word"]) for w in lines[-1][1]) if lines else ""
-        if JOIN.get(prev_text) == " ".join(display(w["word"]) for w in ws):
+        join = {k.upper(): v.upper() for k, v in JOIN.items()}
+        if join.get(prev_text) == " ".join(display(w["word"]) for w in ws):
             lines[-1] = (lines[-1][0] + [pi], lines[-1][1] + ws)
         else:
             lines.append(([pi], ws))
@@ -93,6 +95,7 @@ def main():
     phrases = json.loads((REPO / "tools/nothing_sections.json").read_text())
     words = json.loads((REPO / "tools/nothing_align_words.json").read_text())
     mlm.COL_W = COL_W
+    mlm.FACE_INDEX = fonts.LYRIC_FACE
     old = REPO / "plates/nothing_lyrics"
     for f in old.glob("line_*.png"):              # pre-sets naming
         f.unlink()

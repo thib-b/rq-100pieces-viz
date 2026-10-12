@@ -13,7 +13,8 @@ from pathlib import Path
 from songs.nothing.timeline import REPO
 
 HELVETICA_NEUE = "/System/Library/Fonts/HelveticaNeue.ttc"
-MEDIUM = 10            # the face the verse-1 lyric masks are drawn in (tools/make_lyrics_masks.py)
+BOLD = 1
+LYRIC_FACE = BOLD      # every word on screen in Nothing: typed, NOTHING, and the lyric masks
 CACHE = REPO / "renders" / "nothing" / "cache"
 
 
@@ -38,7 +39,7 @@ def extract_face(ttc_bytes, index):
     return head + b"".join(out_dir) + body
 
 
-def face_path(ttc=HELVETICA_NEUE, index=MEDIUM):
+def face_path(ttc=HELVETICA_NEUE, index=LYRIC_FACE):
     """Path to the cached single-face font file (written on first use)."""
     src = Path(ttc)
     out = CACHE / f"{src.stem}-{index}.ttf"

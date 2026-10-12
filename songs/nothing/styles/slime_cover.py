@@ -1,4 +1,4 @@
-"""slime_cover — the bridge (2:20.636 → 2:58.1): black slime mould takes over a white frame.
+"""slime_cover — the bridge (2:20.636 → 2:58.1): black slime mould takes over the paper.
 
 Black filaments grow up from the bottom edge like a slime mould (Physarum) foraging: each tip
 wanders with a smooth heading, leans upward, branches more and more as the tension builds, and
@@ -20,6 +20,8 @@ import numpy as np
 
 from songs.nothing.state import digest
 from songs.nothing.timeline import REPO
+
+DEPENDS = ["songs/nothing/paper.py", "songs/nothing/styles/plate_ratchet.py"]
 
 DEFAULTS = {
     "paper": "#ffffff",
@@ -55,7 +57,10 @@ DEFAULTS = {
 
 CACHE = REPO / "renders" / "nothing" / "cache"
 LOBE_CORE = 0.7      # a mould's central lobe, as a fraction of its radius
-SOLID = 0.88         # the mould material is fully opaque out to this fraction of a lobe
+SOLID = 0.45         # the mould material is fully opaque out to this fraction of a lobe; beyond,
+SOFT_WIDEN = 1.3     # filaments drawn this much wider than simulated: their blurred edge eats in
+RAGGED = 0.3         # a wide blurred rim, its edge pushed in/out by noise of this full amplitude
+                     # (fully clear before the lobe's mesh edge, so never a hard cut)
 
 
 def _p(ctx):
@@ -247,7 +252,10 @@ def build(ctx, plan):
     p, fps = plan["params"], ctx.fps
     last = ctx.section.last
     B.set_background(p["paper"])
-    ink = eng.make_emission_material("slime_ink", core.hex_lin(p["ink"]))
+    from songs.nothing import paper
+    paper.build(ctx)
+    ink = _filament_material(B, p["ink"])
+    taper = _tip_taper()
     w0, w1 = p["width"]
     frame = lambda t: round(t * fps) + 1                               # noqa: E731
     # filaments reach full thickness as the front tops out
@@ -258,13 +266,16 @@ def build(ctx, plan):
         cu = bpy.data.curves.new(f"slime_{bi}", "CURVE")
         cu.dimensions = "3D"
         cu.bevel_depth = 1.0
-        cu.bevel_resolution = 1
+        cu.bevel_resolution = 4              # round profile: the soft edge comes from its normals
         cu.use_fill_caps = True
+        cu.taper_object = taper              # the growing tip narrows to a point …
+        cu.use_map_taper = True              # … wherever the reveal (bevel_factor_end) has got to
+        cu.taper_radius_mode = "MULTIPLY"
         sp = cu.splines.new("POLY")
         sp.points.add(len(pts) - 1)
         sp.points.foreach_set("co", [c for (x, y, _) in pts for c in (x, y, 0.0, 1.0)])
         n = len(pts)
-        sp.points.foreach_set("radius", [1.0 - 0.15 * i / (n - 1) for i in range(n)])  # slight taper
+        sp.points.foreach_set("radius", _radii(bi, pts))
         cu.materials.append(ink)
         obj = bpy.data.objects.new(f"slime_{bi}", cu)
         obj.location = (0.0, 0.0, 0.01 + 0.0001 * bi)
@@ -315,7 +326,8 @@ def build(ctx, plan):
 
 
 def _ring_material(B, ink):
-    """A concentric mould: solid ink with a thin soft rim and faint growth rings."""
+    """A concentric mould: solid ink with faint growth rings, fading out through a wide blurred
+    rim whose edge is roughened by noise (ragged and soft, not a clean disc)."""
     import bpy
     from engine import core
     mat = bpy.data.materials.new("slime_ring")
@@ -329,11 +341,24 @@ def _ring_material(B, ink):
     nt.links.new(uv.outputs["UV"], length.inputs[0])            # colony_mesh: rim UV radius 1
     rim = nt.nodes.new("ShaderNodeMapRange")
     rim.interpolation_type = "SMOOTHSTEP"
-    rim.inputs["From Min"].default_value = SOLID
-    rim.inputs["From Max"].default_value = 1.0
+    rim.inputs["From Min"].default_value = SOLID + RAGGED / 2
+    rim.inputs["From Max"].default_value = 1.0 - RAGGED / 2
     rim.inputs["To Min"].default_value = 1.0
     rim.inputs["To Max"].default_value = 0.0
-    nt.links.new(length.outputs["Value"], rim.inputs["Value"])
+    noise = nt.nodes.new("ShaderNodeTexNoise")                 # ragged rim (object space)
+    noise.inputs["Scale"].default_value = 5.0
+    noise.inputs["Detail"].default_value = 5.0
+    nt.links.new(uv.outputs["Object"], noise.inputs["Vector"])
+    ragged = nt.nodes.new("ShaderNodeMath")                     # r + (noise - 0.5) * RAGGED
+    ragged.operation = "MULTIPLY_ADD"
+    ragged.inputs[1].default_value = RAGGED
+    nt.links.new(noise.outputs["Fac"], ragged.inputs[0])
+    shift = nt.nodes.new("ShaderNodeMath")
+    shift.operation = "SUBTRACT"
+    shift.inputs[1].default_value = RAGGED / 2
+    nt.links.new(length.outputs["Value"], shift.inputs[0])
+    nt.links.new(shift.outputs["Value"], ragged.inputs[2])
+    nt.links.new(ragged.outputs["Value"], rim.inputs["Value"])
     bands = nt.nodes.new("ShaderNodeMath")                      # faint concentric rings
     bands.operation = "SINE"
     scale = nt.nodes.new("ShaderNodeMath")
@@ -365,6 +390,83 @@ def _ring_material(B, ink):
     mix = nt.nodes.new("ShaderNodeMixShader")
     out = nt.nodes.new("ShaderNodeOutputMaterial")
     nt.links.new(rim.outputs["Result"], mix.inputs["Fac"])
+    nt.links.new(tr.outputs["BSDF"], mix.inputs[1])
+    nt.links.new(em.outputs["Emission"], mix.inputs[2])
+    nt.links.new(mix.outputs["Shader"], out.inputs["Surface"])
+    return mat
+
+
+def _radii(bi, pts):
+    """Per-point radius: a slight taper along the branch, swelling and pinching organically
+    (smooth seeded noise along its length)."""
+    from songs.nothing.seeding import section_rng
+    rng = section_rng("nothing", "slime-radius", 0, bi)
+    waves = [(rng.uniform(4.0, 14.0), rng.uniform(0, 2 * math.pi), rng.uniform(0.5, 1.0))
+             for _ in range(3)]
+    norm = sum(a for _, _, a in waves)
+    n, acc, out = len(pts), 0.0, []
+    for i in range(n):
+        if i:
+            acc += math.dist(pts[i - 1][:2], pts[i][:2])
+        wob = sum(a * math.sin(f * acc + ph) for f, ph, a in waves) / norm
+        out.append(SOFT_WIDEN * (1.0 - 0.15 * i / max(n - 1, 1)) * (1.0 + 0.28 * wob))
+    return out
+
+
+def _tip_taper():
+    """One shared taper curve: full width along the revealed part, narrowing to a point over its
+    last stretch, so a growing filament ends in a soft tip, not a square cut."""
+    import bpy
+    cu = bpy.data.curves.new("slime_tip_taper", "CURVE")
+    sp = cu.splines.new("POLY")
+    prof = [(0.0, 1.0), (0.82, 1.0), (0.9, 0.85), (0.95, 0.55), (0.985, 0.2), (1.0, 0.02)]
+    sp.points.add(len(prof) - 1)
+    sp.points.foreach_set("co", [c for x, y in prof for c in (x, y, 0.0, 1.0)])
+    obj = bpy.data.objects.new("slime_tip_taper", cu)    # 2D, unbevelled: renders nothing
+    bpy.context.collection.objects.link(obj)
+    return obj
+
+
+def _filament_material(B, ink):
+    """Black ink with a soft, ragged edge: opacity follows how squarely the round filament faces
+    the camera (its normal), roughened by fine noise — blurred, organic, not a vector stroke."""
+    import bpy
+    from engine import core
+    mat = bpy.data.materials.new("slime_ink")
+    mat.use_nodes = True
+    B._blended(mat)
+    nt = mat.node_tree
+    nt.nodes.clear()
+    geo = nt.nodes.new("ShaderNodeNewGeometry")
+    xyz = nt.nodes.new("ShaderNodeSeparateXYZ")
+    nt.links.new(geo.outputs["Normal"], xyz.inputs[0])
+    face = nt.nodes.new("ShaderNodeMath")                    # |n·z|: 1 on the crest, 0 at the edge
+    face.operation = "ABSOLUTE"
+    nt.links.new(xyz.outputs["Z"], face.inputs[0])
+    noise = nt.nodes.new("ShaderNodeTexNoise")
+    noise.inputs["Scale"].default_value = 28.0
+    noise.inputs["Detail"].default_value = 4.0
+    nt.links.new(geo.outputs["Position"], noise.inputs["Vector"])
+    rough = nt.nodes.new("ShaderNodeMath")                   # face + (noise - 0.5) * 0.7
+    rough.operation = "MULTIPLY_ADD"
+    rough.inputs[1].default_value = 0.7
+    rough.inputs[2].default_value = -0.35
+    nt.links.new(noise.outputs["Fac"], rough.inputs[0])
+    edge = nt.nodes.new("ShaderNodeMath")
+    edge.operation = "ADD"
+    nt.links.new(face.outputs["Value"], edge.inputs[0])
+    nt.links.new(rough.outputs["Value"], edge.inputs[1])
+    alpha = nt.nodes.new("ShaderNodeMapRange")
+    alpha.interpolation_type = "SMOOTHSTEP"
+    alpha.inputs["From Min"].default_value = 0.0
+    alpha.inputs["From Max"].default_value = 0.6
+    nt.links.new(edge.outputs["Value"], alpha.inputs["Value"])
+    em = nt.nodes.new("ShaderNodeEmission")
+    em.inputs["Color"].default_value = core.hex_lin(ink)
+    tr = nt.nodes.new("ShaderNodeBsdfTransparent")
+    mix = nt.nodes.new("ShaderNodeMixShader")
+    out = nt.nodes.new("ShaderNodeOutputMaterial")
+    nt.links.new(alpha.outputs["Result"], mix.inputs["Fac"])
     nt.links.new(tr.outputs["BSDF"], mix.inputs[1])
     nt.links.new(em.outputs["Emission"], mix.inputs[2])
     nt.links.new(mix.outputs["Shader"], out.inputs["Surface"])

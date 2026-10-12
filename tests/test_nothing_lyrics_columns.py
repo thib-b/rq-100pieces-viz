@@ -57,7 +57,7 @@ def test_outro_shows_each_sheet_line_once():
     song = timeline.load()
     p = {**lc.DEFAULTS, **song.section("outro_bass").params["lyrics"]}
     layout = json.loads(asset(lc.layout_path(p)).read_text())
-    assert [c["text"] for c in layout] == [
+    assert [c["text"] for c in layout] == [t.upper() for t in [            # all caps on screen
         "The definitive version the ideal.", "The wonderful image It's finally real.",
-        "What does a promise mean?", "Nothing"]
+        "What does a promise mean?", "Nothing"]]
     assert lc.clear_by(p) is None

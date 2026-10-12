@@ -8,10 +8,10 @@ RUNS = {r.section.id: r for r in manifest.walk(timeline.load())}
 
 def test_verse2_lines_are_the_sung_lines_in_order():
     texts = [ln["text"] for ln in RUNS["verse2"].plan["lines"]]
-    assert texts == [
+    assert texts == [t.upper() for t in [                                 # all caps on screen
         "A knock on the front door of your day:", "Fill out the survey.",
         "Don't listen to the bitterness in your brain", "But a question remains:",
-        "What does, what does, what does a promise mean?", "What does a promise mean?"]
+        "What does, what does, what does a promise mean?", "What does a promise mean?"]]
 
 
 def test_typing_is_monotonic_one_line_at_a_time_and_tiles_frames():
@@ -52,22 +52,22 @@ def test_first_character_appears_when_the_word_is_sung():
 def test_flip_colours_alternate_and_text_fades_out():
     p = nf.DEFAULTS
     t0 = cues.nothing_typed()
-    assert nf.colours_at(t0) == ("#ffffff", "#000000")       # black on white
+    assert nf.colours_at(t0) == ("#ffffff", "#000000", 1.0)  # black on the paper
     flips = cues.nothing_flips()
     for i, f in enumerate(flips):
-        bg, fg = nf.colours_at(f + 0.01)
+        bg, fg, _ = nf.colours_at(f + 0.01)
         assert (bg == "#000000") == (i % 2 == 0)
     claps = cues.clap_flips()
     hold = (cues.scene1()["music_stop"] + claps[0]) / 2               # the pause before the claps
-    assert nf.colours_at(hold) == ("#000000", "#ffffff")
-    gaps = []
+    assert nf.colours_at(hold) == ("#000000", "#ffffff", 1.0)
+    alphas = []
     for i, f in enumerate(claps):
-        bg, fg = nf.colours_at(f + 0.01)
-        assert bg in ("#000000", "#ffffff")                  # backgrounds stay pure
+        bg, fg, a = nf.colours_at(f + 0.01)
+        assert {bg, fg} == {"#000000", "#ffffff"}            # paper or negative; text pure
         assert (bg == "#ffffff") == (i % 2 == 0)             # and keep alternating
-        gaps.append(abs(int(bg[1:3], 16) - int(fg[1:3], 16)))
-    assert gaps == sorted(gaps, reverse=True) and gaps[-1] == 0   # text fades into its bg
-    assert nf.colours_at(claps[-1] + 0.01) == ("#ffffff", "#ffffff")   # ends on white, text gone
+        alphas.append(a)
+    assert alphas == sorted(alphas, reverse=True) and alphas[-1] == 0   # text fades out
+    assert nf.colours_at(claps[-1] + 0.01) == ("#ffffff", "#000000", 0.0)  # paper, text gone
 
 
 def test_flip_sections_hand_over_and_end_blank():
@@ -83,13 +83,13 @@ def test_flip_sections_hand_over_and_end_blank():
 
 def test_each_flip_key_lands_on_the_frame_of_its_cue():
     keys = RUNS["nothing2"].plan["keys"]
-    for i, (f, bg, fg) in enumerate(keys[1:]):
+    for i, (f, bg, fg, _) in enumerate(keys[1:]):
         assert f == round(cues.nothing_flips()[i] * 60) + 1
         assert (bg == "#000000") == (i % 2 == 0)        # first flip → white on black
 
 
 def test_clap_flips_each_get_their_own_frame_before_the_bridge():
     keys = RUNS["claps"].plan["keys"]
-    frames = [f for f, _, _ in keys[1:]]
+    frames = [f for f, *_ in keys[1:]]
     assert len(frames) == 27 and len(set(frames)) == 27
     assert frames[-1] < RUNS["strings_bridge"].section.first

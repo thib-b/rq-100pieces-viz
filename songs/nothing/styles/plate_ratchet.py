@@ -1,5 +1,6 @@
 """plate_ratchet — scene 1's plate: ratchet rotation on the kicks + slow zoom, then the fall
-into the largest white puff, landing on pure white at the downbeat after the band stop.
+into the largest white puff, landing at the downbeat after the band stop on the view that stays
+on as the paper of everything after it (songs/nothing/paper.py).
 
 Everything is a pure function of *global* time (cues.toml), so the exposition and first_bridge
 sections (which both use this style) join seamlessly and any frame renders on its own.
@@ -32,7 +33,6 @@ DEFAULTS = {
     "overshoot_deg": 1.0,             # the mechanical catch after each landing …
     "settle_sixteenths": 1.0,         # … settled within this many 16ths
     "zoom_accel_power": 4.0,          # how sharply the final fall accelerates
-    "white_fade_secs": 0.40,          # pure-white fade completing on the landing
 }
 
 
@@ -102,12 +102,6 @@ def camera_center(t, rw, p=DEFAULTS):
     return (px * (1 - w), py * (1 - w))
 
 
-def white_alpha(t, p=DEFAULTS):
-    """Opacity of the pure-white veil: eases in over `white_fade_secs`, complete at landing."""
-    tl = cues.scene1()["landing"]
-    return _smoothstep((t - (tl - p["white_fade_secs"])) / p["white_fade_secs"])
-
-
 # ---------------- style contract ----------------
 def plan(ctx):
     p = _p(ctx)
@@ -123,7 +117,6 @@ def plan(ctx):
         "angle_deg": [ratchet_angle(t, p) for t in ts],
         "ortho": [fw / m for m in mags],
         "cam_xy": centers,
-        "white": [white_alpha(t, p) for t in ts],
     }
 
 
@@ -149,10 +142,9 @@ def build(ctx, plan):
                   radial_alpha=tuple(p["ground_feather_uv"]))
     dish = B.image_plane("photo_dish", img, plan["side"], z=0.01,
                          radial_alpha=tuple(p["disc_cut_uv"]))
-    veil = B.camera_veil("white_veil", "#ffffff")
     cam = B.camera()
-    for f, a, o, (cx, cy), wa in zip(plan["frames"], plan["angle_deg"], plan["ortho"],
-                                     plan["cam_xy"], plan["white"]):
+    for f, a, o, (cx, cy) in zip(plan["frames"], plan["angle_deg"], plan["ortho"],
+                                 plan["cam_xy"]):
         dish.rotation_euler[2] = -math.radians(a)
         dish.keyframe_insert("rotation_euler", index=2, frame=f)
         cam.data.ortho_scale = o
@@ -160,5 +152,3 @@ def build(ctx, plan):
         cam.location[0], cam.location[1] = cx, cy
         cam.keyframe_insert("location", index=0, frame=f)
         cam.keyframe_insert("location", index=1, frame=f)
-        veil.alpha_input.default_value = wa
-        veil.alpha_input.keyframe_insert("default_value", frame=f)
